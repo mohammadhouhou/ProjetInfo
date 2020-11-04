@@ -30,44 +30,44 @@ namespace ProjetInfo.Controllers
         }
 
         //GET api/institutions/{id}
-        public ActionResult<IEnumerable<InsitutionReadDto>> GetInstitutionById(int id)
+        public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionById(int id)
         {
             var insitutionItem = _repository.GetInstitutionById(id);
             if (insitutionItem != null)
-                return Ok(_mapper.Map<InsitutionReadDto>(insitutionItem));
+                return Ok(_mapper.Map<InstitutionReadDto>(insitutionItem));
             return NotFound();
         }
 
         //GET api/institutions/{id}/children
-        public ActionResult<IEnumerable<InsitutionReadDto>> GetInstitutionChildren(int id)
+        public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionChildren(int id)
         {
             var instiutionChildren = _repository.GetInstitutionChildren(id);
             if (instiutionChildren != null)
-                return Ok(_mapper.Map<IEnumerable<InsitutionReadDto>>(instiutionChildren);
+                return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(instiutionChildren);
             return NotFound();
         }
 
         //POST api/institutions
         [HttpPost]
-        public ActionResult<InsitutionReadDto> CreateInstitution(InsitutionReadDto insitutionReadDto)
+        public ActionResult<InstitutionReadDto> CreateInstitution(InstitutionReadDto insitutionReadDto)
         {
-            var institutionModel = _mapper.Map<Insitution>(insitutionReadDto);
+            var institutionModel = _mapper.Map<Institution>(insitutionReadDto);
             _repository.CreateInstitution(institutionModel);
             _repository.SaveChanges();
 
-            var institutionReadDto = _mapper.Map<InsitutionReadDto>(institutionModel);
+            var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
 
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.Id}, institutionReadDto);
         }
 
         //POST api/institution/{id}/institutions
         [HttpPost]
-        public ActionResult<InsitutionReadDto> CreateInstitutionAsChild(InsitutionReadDto insitutionReadDto, int parentId)
+        public ActionResult<InstitutionReadDto> CreateInstitutionAsChild(InstitutionReadDto insitutionReadDto, int parentId)
         {
-            var institutionModel = _mapper.Map<Insitution>(insitutionReadDto);
+            var institutionModel = _mapper.Map<Institution>(insitutionReadDto);
             _repository.CreateInstitionAsChild(institutionModel, parentId);
 
-            var institutionReadDto = _mapper.Map<InsitutionReadDto>(institutionModel);
+            var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.parentId }, institutionReadDto);
         }
 
