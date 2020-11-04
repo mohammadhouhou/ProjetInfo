@@ -12,10 +12,10 @@ namespace ProjetInfo.Controllers
     [ApiController]
     public class InstitutionController : ControllerBase
     {
-        private readonly IInstitutionRepo _repository;
+        private readonly IInstitutionService _repository;
         private readonly IMapper _mapper;
 
-        public InstitutionController(AbstractInstitution repository, IMapper mapper)
+        public InstitutionController(IInstitutionService repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
