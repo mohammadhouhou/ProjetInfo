@@ -82,7 +82,7 @@ namespace ProjetInfo.bll.Services
         public void CreateInstitution(institution inst)
         {
             _context.institutions.Add(inst);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
 
@@ -124,5 +124,10 @@ namespace ProjetInfo.bll.Services
         {
             _context.SaveChanges();
         }
+
+        /*public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }*/
     }
 }

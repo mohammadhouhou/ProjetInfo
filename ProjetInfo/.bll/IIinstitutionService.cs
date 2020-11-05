@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.bll
 {
-    interface IInstitutionService
+    public interface IInstitutionService
     {
         IEnumerable<institution> GetInstitutionChildren(Guid Id);
         //IEnumerable<ActivityCategory> GetActivityCategories(Guid Id);
@@ -18,6 +18,7 @@ namespace ProjetInfo.bll
         void AddChild(institutionType type, string NEWcode, string NEWname, Guid parentId);
         public void UpdateInstitution(institution OLDinst);
         void CreateInstitution(institution inst);
+        bool SaveChanges();
 
         //ActivityCategory CreateActivityCategory(string code, string name);
         //void Delete(ActivityCategory act_cat);

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Dtos;
 using ProjetInfo.bll.Services;
+using ProjetInfo.dal;
 using ProjetInfo.dal.entities;
 
 namespace ProjetInfo.Controllers
@@ -19,7 +20,7 @@ namespace ProjetInfo.Controllers
         private readonly IInstitutionService _repository;
         private readonly IMapper _mapper;
 
-        public InstitutionController(InstitutionContextService repository, IMapper mapper)
+        public InstitutionController(IInstitutionService repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
