@@ -16,7 +16,7 @@ namespace ProjetInfo.dal
             base.OnModelCreating(builder);
         }
         public DbSet<institution> institutions { get; set; }
-        public DbSet<ActivityCategory> activityCategories { get; set; }
-        public DbSet<CourseComponentType> courseComponentTypes { get; set; }
+        //public DbSet<ActivityCategory> activityCategories { get; set; }
+        //public DbSet<CourseComponentType> courseComponentTypes { get; set; }
     }
 }

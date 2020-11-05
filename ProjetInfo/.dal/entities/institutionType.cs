@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.dal.entities
 {
-    public class institutionType
+    public partial class institutionType
     {
-        public string type { get; set; }
     }
+
+    
 }

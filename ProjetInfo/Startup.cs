@@ -10,6 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProjetInfo.dal;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using ProjetInfo.bll.Services;
+using ProjetInfo.bll;
 
 namespace ProjetInfo
 {
@@ -25,7 +31,15 @@ namespace ProjetInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<institutionContext>(opt =>
+              opt.UseSqlServer("Server=DESKTOP-DMIQPQP; database=institutionDB; Trusted_Connection=SSPI;"));
             services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IInstitutionService, InstitutionContextService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
