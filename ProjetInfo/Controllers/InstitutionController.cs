@@ -54,7 +54,7 @@ namespace ProjetInfo.Controllers
         [HttpPost]
         public ActionResult<InstitutionReadDto> CreateInstitution(InstitutionReadDto insitutionReadDto)
         {
-            var institutionModel = _mapper.Map<InstitutionContextService>(insitutionReadDto);
+            var institutionModel = _mapper.Map<institution>(insitutionReadDto);
             _repository.CreateInstitution(institutionModel);
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
@@ -66,8 +66,8 @@ namespace ProjetInfo.Controllers
         [HttpPost]
         public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto, Guid parentId)
         {
-            var institutionModel = _mapper.Map<InstitutionContextService>(insitutionReadDto);
-            _repository.(institutionModel, parentId);
+            var institutionModel = _mapper.Map<institution>(insitutionReadDto);
+            _repository.AddChild(institutionModel, parentId);
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.parentId }, institutionReadDto);
