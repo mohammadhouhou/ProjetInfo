@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjetInfo.bll;
+using ProjetInfo.bll.Services;
 
 namespace ProjetInfo.Controllers
 {
@@ -12,10 +14,10 @@ namespace ProjetInfo.Controllers
     [ApiController]
     public class InstitutionController : ControllerBase
     {
-        private readonly IInstitutionService _repository;
+        private readonly IInstitution _repository;
         private readonly IMapper _mapper;
 
-        public InstitutionController(IInstitutionService repository, IMapper mapper)
+        public InstitutionController(InstitutionContextService repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -25,7 +27,7 @@ namespace ProjetInfo.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetAllInstitutions()
         {
-            var institutionItems = _repository.GetAllInstitutions();
+            var institutionItems = _repository.GetInstitutions();
             return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(institutionItems));
         }
 
@@ -51,7 +53,7 @@ namespace ProjetInfo.Controllers
         [HttpPost]
         public ActionResult<InstitutionReadDto> CreateInstitution(InstitutionReadDto insitutionReadDto)
         {
-            var institutionModel = _mapper.Map<Institution>(insitutionReadDto);
+            var institutionModel = _mapper.Map<InstitutionContextService>(insitutionReadDto);
             _repository.CreateInstitution(institutionModel);
             _repository.SaveChanges();
 
@@ -64,7 +66,7 @@ namespace ProjetInfo.Controllers
         [HttpPost]
         public ActionResult<InstitutionReadDto> CreateInstitutionAsChild(InstitutionReadDto insitutionReadDto, int parentId)
         {
-            var institutionModel = _mapper.Map<Institution>(insitutionReadDto);
+            var institutionModel = _mapper.Map<InstitutionContextService>(insitutionReadDto);
             _repository.CreateInstitionAsChild(institutionModel, parentId);
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
