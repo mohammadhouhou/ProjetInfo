@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Services;
+using ProjetInfo.dal.entities;
 
 namespace ProjetInfo.Controllers
 {
@@ -14,7 +15,7 @@ namespace ProjetInfo.Controllers
     [ApiController]
     public class InstitutionController : ControllerBase
     {
-        private readonly IInstitution _repository;
+        private readonly IInstitutionService _repository;
         private readonly IMapper _mapper;
 
         public InstitutionController(InstitutionContextService repository, IMapper mapper)
@@ -32,7 +33,7 @@ namespace ProjetInfo.Controllers
         }
 
         //GET api/institutions/{id}
-        public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionById(int id)
+        public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionById(Guid id)
         {
             var insitutionItem = _repository.GetInstitutionById(id);
             if (insitutionItem != null)
@@ -41,11 +42,11 @@ namespace ProjetInfo.Controllers
         }
 
         //GET api/institutions/{id}/children
-        public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionChildren(int id)
+        public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionChildren(Guid id)
         {
             var instiutionChildren = _repository.GetInstitutionChildren(id);
             if (instiutionChildren != null)
-                return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(instiutionChildren);
+                return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(instiutionChildren));
             return NotFound();
         }
 
@@ -55,7 +56,6 @@ namespace ProjetInfo.Controllers
         {
             var institutionModel = _mapper.Map<InstitutionContextService>(insitutionReadDto);
             _repository.CreateInstitution(institutionModel);
-            _repository.SaveChanges();
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
 
@@ -64,17 +64,17 @@ namespace ProjetInfo.Controllers
 
         //POST api/institution/{id}/institutions
         [HttpPost]
-        public ActionResult<InstitutionReadDto> CreateInstitutionAsChild(InstitutionReadDto insitutionReadDto, int parentId)
+        public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto, Guid parentId)
         {
             var institutionModel = _mapper.Map<InstitutionContextService>(insitutionReadDto);
-            _repository.CreateInstitionAsChild(institutionModel, parentId);
+            _repository.(institutionModel, parentId);
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.parentId }, institutionReadDto);
         }
 
         //PUT api/institution/{id}
-        public ActionResult updateInstitution(int id, InstitutionUpdateDto institutionUpdateDto) {
+        public ActionResult updateInstitution(Guid id, InstitutionUpdateDto institutionUpdateDto) {
             var institutionModelFromRepo = _repository.GetInstitutionById(id);
             if(institutionModelFromRepo == null)
             {
@@ -83,7 +83,6 @@ namespace ProjetInfo.Controllers
             _mapper.Map(institutionUpdateDto, institutionModelFromRepo);
 
             _repository.UpdateInstitution(institutionModelFromRepo);
-            _repository.SaveChanges();
 
             return NoContent();
         }
