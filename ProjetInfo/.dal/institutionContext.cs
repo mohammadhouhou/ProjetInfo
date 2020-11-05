@@ -9,6 +9,14 @@ namespace ProjetInfo.dal
 {
     public class institutionContext : DbContext
     {
+        public institutionContext(DbContextOptions options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
         public DbSet<institution> institutions { get; set; }
+        public DbSet<ActivityCategory> activityCategories { get; set; }
+        public DbSet<CourseComponentType> courseComponentTypes { get; set; }
     }
 }
