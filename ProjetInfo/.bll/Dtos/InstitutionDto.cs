@@ -1,0 +1,22 @@
+﻿using ProjetInfo.dal.entities;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ProjetInfo.bll.Dtos
+{
+    public class InstitutionDto
+    {
+        [Required]
+        [MaxLength(50)]
+        public string code { get; set; }
+        [Required]
+        [MaxLength(250)]
+        public string name { get; set; }
+        public Guid parentId { get; set; }
+        [Required]
+        public institutionType type { get; set; }
+    }
+}

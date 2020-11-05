@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetInfo.bll;
+using ProjetInfo.bll.Dtos;
 using ProjetInfo.bll.Services;
 using ProjetInfo.dal.entities;
 
@@ -59,7 +60,7 @@ namespace ProjetInfo.Controllers
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
 
-            return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.Id}, institutionReadDto);
+            return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.id}, institutionReadDto);
         }
 
         //POST api/institution/{id}/institutions

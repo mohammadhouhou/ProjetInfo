@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ProjetInfo.bll.Dtos;
+using ProjetInfo.dal.entities;
 
 namespace ProjetInfo.Mapping
 {
@@ -11,11 +13,11 @@ namespace ProjetInfo.Mapping
         public InstitutionProfile()
         {
             //Source -> Target
-            CreateMap<Insitution, InstitutionReadDto>();
+            CreateMap<institution, InstitutionReadDto>();
             //Target -> Source
-            CreateMap<InstitutionReadDto, Institution>();
-            CreateMap<InstitutionUpdateDto, Institution>();
-            CreateMap<Institution, InstitutionUpdateDto>();
+            CreateMap<InstitutionReadDto, institution>();
+            CreateMap<InstitutionUpdateDto, institution>();
+            CreateMap<institution, InstitutionUpdateDto>();
         }
     }
 }
