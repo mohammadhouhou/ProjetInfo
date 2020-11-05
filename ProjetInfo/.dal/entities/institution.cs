@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.dal.entities
 {
+    public enum institutionType
+    {
+        amicale = 1,
+        faculte = 2,
+        institut = 3,
+        ecole = 4,
+        laboratoire = 5
+    }
     public class institution
     {
         [Key]

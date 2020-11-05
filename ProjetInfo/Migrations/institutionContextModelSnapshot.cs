@@ -72,6 +72,9 @@ namespace ProjetInfo.Migrations
                     b.Property<Guid>("parentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("type")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
                     b.HasIndex("institutionid");

@@ -10,7 +10,7 @@ using ProjetInfo.dal;
 namespace ProjetInfo.Migrations
 {
     [DbContext(typeof(institutionContext))]
-    [Migration("20201105222245_Migrations")]
+    [Migration("20201105234426_Migrations")]
     partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,9 @@ namespace ProjetInfo.Migrations
 
                     b.Property<Guid>("parentId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("type")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 

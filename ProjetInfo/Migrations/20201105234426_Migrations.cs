@@ -15,6 +15,7 @@ namespace ProjetInfo.Migrations
                     code = table.Column<string>(maxLength: 50, nullable: false),
                     name = table.Column<string>(maxLength: 250, nullable: false),
                     parentId = table.Column<Guid>(nullable: false),
+                    type = table.Column<int>(nullable: false),
                     institutionid = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>

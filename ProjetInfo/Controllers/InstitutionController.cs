@@ -35,6 +35,7 @@ namespace ProjetInfo.Controllers
         }
 
         //GET api/institutions/{id}
+        [HttpGet("{id}",Name = "GetInstitutionById")]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionById(Guid id)
         {
             var insitutionItem = _repository.GetInstitutionById(id);
@@ -44,6 +45,7 @@ namespace ProjetInfo.Controllers
         }
 
         //GET api/institutions/{id}/children
+        [HttpGet("{id}", Name = "GetInstitutionChildren")]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionChildren(Guid id)
         {
             var instiutionChildren = _repository.GetInstitutionChildren(id);
@@ -65,7 +67,7 @@ namespace ProjetInfo.Controllers
         }
 
         //POST api/institution/{id}/institutions
-        [HttpPost]
+        [HttpPost("{id}", Name = "AddChild")]
         public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto, Guid parentId)
         {
             var institutionModel = _mapper.Map<institution>(insitutionReadDto);
@@ -76,6 +78,7 @@ namespace ProjetInfo.Controllers
         }
 
         //PUT api/institution/{id}
+        [HttpPut("{id}")]
         public ActionResult updateInstitution(Guid id, InstitutionUpdateDto institutionUpdateDto) {
             var institutionModelFromRepo = _repository.GetInstitutionById(id);
             if(institutionModelFromRepo == null)
