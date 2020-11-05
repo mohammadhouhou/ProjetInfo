@@ -9,7 +9,7 @@ namespace ProjetInfo.dal
 {
     public class institutionContext : DbContext
     {
-        public institutionContext(DbContextOptions options) : base(options) { }
+        public institutionContext(DbContextOptions<institutionContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
