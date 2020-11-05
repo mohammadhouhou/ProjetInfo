@@ -59,17 +59,18 @@ namespace ProjetInfo.bll.Services
         //********************* POST METHODS *********************
 
         //must have an institution id to get it's children
-        public void AddChild(institution inst, string NEWcode, string NEWname, institutionType NEWtype)
+        public void AddChild(institutionType NEWtype, string NEWcode, string NEWname, Guid parentId)
         {
-            if (inst == null)
-                throw new ArgumentNullException(nameof(inst));
+            institution parentInst = _context.institutions.Find(parentId);
+            if (parentInst == null)
+                throw new ArgumentNullException(nameof(parentInst));
             institution child = new institution
             {
                 code = NEWcode,
                 name = NEWname,
                 type = NEWtype
             };
-            _context.institutions.Find(inst.id).children.Append(child);
+            _context.institutions.Find(parentInst.id).children.Append(child);
             _context.institutions.Add(child);
             _context.SaveChanges();
             /*var parent = _context.institutions.Find(parentId);

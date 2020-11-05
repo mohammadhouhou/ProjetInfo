@@ -68,7 +68,7 @@ namespace ProjetInfo.Controllers
         public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto, Guid parentId)
         {
             var institutionModel = _mapper.Map<institution>(insitutionReadDto);
-            _repository.AddChild(institutionModel, parentId);
+            _repository.AddChild(institutionModel.type, institutionModel.code, institutionModel.name, parentId);
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.parentId }, institutionReadDto);
