@@ -10,7 +10,7 @@ using ProjetInfo.dal;
 namespace ProjetInfo.Migrations
 {
     [DbContext(typeof(institutionContext))]
-    [Migration("20201106001903_Migrations")]
+    [Migration("20201106013637_Migrations")]
     partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

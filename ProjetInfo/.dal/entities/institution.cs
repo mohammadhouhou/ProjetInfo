@@ -13,7 +13,8 @@ namespace ProjetInfo.dal.entities
         institut,
         ecole,
         laboratoire,
-        universite
+        universite,
+        campus
     }
     public class institution
     {

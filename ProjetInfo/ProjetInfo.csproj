@@ -1,25 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201105234426_Migrations.cs" />
-    <Compile Remove="Migrations\20201105234426_Migrations.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Include=".api\Controllers\InstitutionController.cs" />
     <Compile Include=".bll\Dtos\InstitutionCreateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionReadDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionUpdateDto.cs" />
-    <Compile Include=".bll\IIinstitutionService.cs" />
+    <Compile Include=".bll\Services\IIinstitutionService.cs" />
+    <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionContextService.cs" />
     <Compile Include=".dal\entities\ActivityCategory.cs" />
     <Compile Include=".dal\entities\CourseComponentType.cs" />
     <Compile Include=".dal\entities\institution.cs" />
     <Compile Include=".dal\institutionContext.cs" />
+    <Compile Include=".dal\Migrations\20201106013637_Migrations.cs" />
+    <Compile Include=".dal\Migrations\20201106013637_Migrations.Designer.cs" />
+    <Compile Include=".dal\Migrations\institutionContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
