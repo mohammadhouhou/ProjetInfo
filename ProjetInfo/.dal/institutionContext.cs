@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.dal
 {
-    public class institutionContext : DbContext
+    public class InstitutionContext : DbContext
     {
-        public institutionContext(DbContextOptions<institutionContext> options) : base(options) 
+        public InstitutionContext(DbContextOptions<InstitutionContext> options) : base(options) 
         {
             Database.EnsureCreated();
         }
@@ -18,7 +18,7 @@ namespace ProjetInfo.dal
         {
             //base.OnModelCreating(builder);
         }*/
-        public DbSet<institution> institutions { get; set; }
+        public DbSet<Institution> institutions { get; set; }
         //public DbSet<ActivityCategory> activityCategories { get; set; }
         //public DbSet<CourseComponentType> courseComponentTypes { get; set; }
     }

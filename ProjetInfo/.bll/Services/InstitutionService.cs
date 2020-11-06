@@ -13,24 +13,24 @@ using System.Xml.Linq;
 namespace ProjetInfo.bll.Services
 {
 
-    public class InstitutionContextService : IInstitutionService
+    public class InstitutionService : IInstitutionService
     {
 
-        private readonly institutionContext _context;
+        private readonly InstitutionContext _context;
 
 
         //********************* GET METHODS *********************
 
-        public InstitutionContextService(institutionContext context)
+        public InstitutionService(InstitutionContext context)
         {
             _context = context;
         }
-        public IEnumerable<institution> GetInstitutions()
+        public IEnumerable<Institution> GetInstitutions()
         {
             return _context.institutions.ToList();
         }
 
-        public institution GetInstitutionById(Guid id)
+        public Institution GetInstitutionById(Guid id)
         {
             return _context.institutions.Find(id);
         }
@@ -39,12 +39,12 @@ namespace ProjetInfo.bll.Services
             return _context.institutions.Find(Id).activityCategories; // .SelectMany(table => table.activityCategories);
         }*/
 
-        public IEnumerable<institution> GetInstitutionChildren(Guid Id)
+        public IEnumerable<Institution> GetInstitutionChildren(Guid Id)
         {
-            return _context.institutions.FromSqlRaw("Select * from institutions").Where(institutions => institutions.parentId.Equals(Id)); //.Select(table => table.children).SingleOrDefault();
+            return _context.institutions.ToList().Where(institutions => institutions.parentId.Equals(Id)); //.Select(table => table.children).SingleOrDefault();
         }
 
-        public string GetCode(Guid Id)
+/*        public string GetCode(Guid Id)
         {
             return _context.institutions.Find(Id).code;
 
@@ -54,32 +54,26 @@ namespace ProjetInfo.bll.Services
         public string GetName(Guid Id)
         {
             return _context.institutions.Find(Id).name;   //.Select(table => table.name).SingleOrDefault();
-        }
+        }*/
 
 
         //********************* POST METHODS *********************
 
         //must have an institution id to get it's children
-        public void AddChild(institution childInst)
+        public void AddChild(Institution childInst)
         {
-            institution parentInst = _context.institutions.Find(childInst.parentId);
+            Institution parentInst = _context.institutions.Find(childInst.parentId);
             if (parentInst == null)
                 throw new ArgumentNullException(nameof(parentInst));
-            IEnumerable<institution> childlist = _context.institutions.Find(parentInst.id).children;
-            if(childlist == null)
-            {
-                childlist = new List<institution>();
-            }
-
-            childlist.Append(childInst);
             _context.institutions.Add(childInst);
             _context.SaveChanges();
+           
             /*var parent = _context.institutions.Find(parentId);
             parent.children.
             _context.institutions.Add(inst);*/
         }
 
-        public void CreateInstitution(institution inst)
+        public void CreateInstitution(Institution inst)
         {
             _context.institutions.Add(inst);
             _context.SaveChangesAsync();
@@ -120,7 +114,7 @@ namespace ProjetInfo.bll.Services
         }*/
 
         //********************* UPDATE METHODS *********************
-        public void UpdateInstitution(institution OLDinst)
+        public void UpdateInstitution(Institution OLDinst)
         {
             _context.SaveChanges();
         }

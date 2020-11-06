@@ -31,7 +31,7 @@ namespace ProjetInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<institutionContext>(opt =>
+            services.AddDbContext<InstitutionContext>(opt =>
               opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(s =>
@@ -39,7 +39,7 @@ namespace ProjetInfo
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<IInstitutionService, InstitutionContextService>();
+            services.AddScoped<IInstitutionService, InstitutionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

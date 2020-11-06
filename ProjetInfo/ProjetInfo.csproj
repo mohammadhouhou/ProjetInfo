@@ -12,13 +12,13 @@
     <Compile Include=".bll\Dtos\InstitutionUpdateDto.cs" />
     <Compile Include=".bll\Services\IIinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
-    <Compile Include=".bll\Services\InstitutionContextService.cs" />
+    <Compile Include=".bll\Services\InstitutionService.cs" />
     <Compile Include=".dal\entities\ActivityCategory.cs" />
     <Compile Include=".dal\entities\CourseComponentType.cs" />
-    <Compile Include=".dal\entities\institution.cs" />
-    <Compile Include=".dal\institutionContext.cs" />
-    <Compile Include=".dal\Migrations\20201106013637_Migrations.cs" />
-    <Compile Include=".dal\Migrations\20201106013637_Migrations.Designer.cs" />
+    <Compile Include=".dal\entities\Institution.cs" />
+    <Compile Include=".dal\InstitutionContext.cs" />
+    <Compile Include=".dal\Migrations\20201106143835_Migrations.cs" />
+    <Compile Include=".dal\Migrations\20201106143835_Migrations.Designer.cs" />
     <Compile Include=".dal\Migrations\institutionContextModelSnapshot.cs" />
   </ItemGroup>
 

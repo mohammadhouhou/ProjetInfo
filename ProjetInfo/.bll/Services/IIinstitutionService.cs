@@ -9,18 +9,17 @@ namespace ProjetInfo.bll
 {
     public interface IInstitutionService
     {
-        IEnumerable<institution> GetInstitutionChildren(Guid Id);
+        IEnumerable<Institution> GetInstitutionChildren(Guid Id);
         //IEnumerable<ActivityCategory> GetActivityCategories(Guid Id);
-        IEnumerable<institution> GetInstitutions();
-        institution GetInstitutionById(Guid id);
-        string GetCode(Guid id);
-        string GetName(Guid id);
-        void AddChild(institution childInst);
-        public void UpdateInstitution(institution OLDinst);
-        void CreateInstitution(institution inst);
+        IEnumerable<Institution> GetInstitutions();
+        Institution GetInstitutionById(Guid id);
+/*        string GetCode(Guid id);
+        string GetName(Guid id);*/
+        void AddChild(Institution childInst);
+        public void UpdateInstitution(Institution OLDinst);
+        void CreateInstitution(Institution inst);
 
         //ActivityCategory CreateActivityCategory(string code, string name);
         //void Delete(ActivityCategory act_cat);
-
     }
 }

@@ -13,11 +13,11 @@ namespace ProjetInfo.Mapping
         public InstitutionProfile()
         {
             //Source -> Target
-            CreateMap<institution, InstitutionReadDto>();
+            CreateMap<Institution, InstitutionReadDto>();
             //Target -> Source
-            CreateMap<InstitutionReadDto, institution>();
-            CreateMap<InstitutionUpdateDto, institution>();
-            CreateMap<institution, InstitutionUpdateDto>();
+            CreateMap<InstitutionReadDto, Institution>();
+            CreateMap<InstitutionUpdateDto, Institution>();
+            CreateMap<Institution, InstitutionUpdateDto>();
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjetInfo.dal.entities
 {
+    //Put in a sperate class
     public enum institutionType
     {
         amicale,
@@ -16,7 +18,7 @@ namespace ProjetInfo.dal.entities
         universite,
         campus
     }
-    public class institution
+    public class Institution
     {
         [Key]
         public Guid id { get; set; }
@@ -26,11 +28,8 @@ namespace ProjetInfo.dal.entities
         [Required]
         [MaxLength(250)]
         public string name { get; set; }
-        [Required]
-        public IEnumerable<ActivityCategory> activityCategories { get; set; } = null!;
-        [Required]
-        public IEnumerable<institution> children { get; set; } = null!;
-        public Guid parentId { get; set; }
+        [ForeignKey("parent")]
+        public Guid? parentId { get; set; }
         [Required]
         public institutionType type { get; set; }
 
