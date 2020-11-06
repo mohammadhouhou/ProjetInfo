@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201105234426_Migrations.cs" />
+    <Compile Remove="Migrations\20201105234426_Migrations.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include=".bll\Dtos\InstitutionCreateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionReadDto.cs" />

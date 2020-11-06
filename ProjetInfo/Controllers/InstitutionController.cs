@@ -45,7 +45,7 @@ namespace ProjetInfo.Controllers
         }
 
         //GET api/institutions/{id}/children
-        [HttpGet("{id}", Name = "GetInstitutionChildren")]
+        [HttpGet("children/{id}", Name = "GetInstitutionChildren")]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionChildren(Guid id)
         {
             var instiutionChildren = _repository.GetInstitutionChildren(id);
@@ -68,10 +68,10 @@ namespace ProjetInfo.Controllers
 
         //POST api/institution/{id}/institutions
         [HttpPost("{id}", Name = "AddChild")]
-        public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto, Guid parentId)
+        public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto)
         {
             var institutionModel = _mapper.Map<institution>(insitutionReadDto);
-            _repository.AddChild(institutionModel.type, institutionModel.code, institutionModel.name, parentId);
+            _repository.AddChild(institutionModel);
 
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.parentId }, institutionReadDto);

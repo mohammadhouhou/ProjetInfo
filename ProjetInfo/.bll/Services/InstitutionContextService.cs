@@ -41,7 +41,7 @@ namespace ProjetInfo.bll.Services
 
         public IEnumerable<institution> GetInstitutionChildren(Guid Id)
         {
-            return _context.institutions.Find(Id).children; //.Select(table => table.children).SingleOrDefault();
+            return _context.institutions.FromSqlRaw("Select * from institutions").Where(institutions => institutions.parentId.Equals(Id)); //.Select(table => table.children).SingleOrDefault();
         }
 
         public string GetCode(Guid Id)
@@ -60,19 +60,19 @@ namespace ProjetInfo.bll.Services
         //********************* POST METHODS *********************
 
         //must have an institution id to get it's children
-        public void AddChild(institutionType NEWtype, string NEWcode, string NEWname, Guid parentId)
+        public void AddChild(institution childInst)
         {
-            institution parentInst = _context.institutions.Find(parentId);
+            institution parentInst = _context.institutions.Find(childInst.parentId);
             if (parentInst == null)
                 throw new ArgumentNullException(nameof(parentInst));
-            institution child = new institution
+            IEnumerable<institution> childlist = _context.institutions.Find(parentInst.id).children;
+            if(childlist == null)
             {
-                code = NEWcode,
-                name = NEWname,
-                type = NEWtype
-            };
-            _context.institutions.Find(parentInst.id).children.Append(child);
-            _context.institutions.Add(child);
+                childlist = new List<institution>();
+            }
+
+            childlist.Append(childInst);
+            _context.institutions.Add(childInst);
             _context.SaveChanges();
             /*var parent = _context.institutions.Find(parentId);
             parent.children.

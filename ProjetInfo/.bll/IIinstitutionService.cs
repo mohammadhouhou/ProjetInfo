@@ -15,7 +15,7 @@ namespace ProjetInfo.bll
         institution GetInstitutionById(Guid id);
         string GetCode(Guid id);
         string GetName(Guid id);
-        void AddChild(institutionType type, string NEWcode, string NEWname, Guid parentId);
+        void AddChild(institution childInst);
         public void UpdateInstitution(institution OLDinst);
         void CreateInstitution(institution inst);
 

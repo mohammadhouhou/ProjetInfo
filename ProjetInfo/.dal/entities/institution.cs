@@ -8,11 +8,12 @@ namespace ProjetInfo.dal.entities
 {
     public enum institutionType
     {
-        amicale = 1,
-        faculte = 2,
-        institut = 3,
-        ecole = 4,
-        laboratoire = 5
+        amicale,
+        faculte,
+        institut,
+        ecole,
+        laboratoire,
+        universite
     }
     public class institution
     {
@@ -24,8 +25,10 @@ namespace ProjetInfo.dal.entities
         [Required]
         [MaxLength(250)]
         public string name { get; set; }
-        public IEnumerable<ActivityCategory> activityCategories { get; set; }
-        public IEnumerable<institution> children { get; set; }
+        [Required]
+        public IEnumerable<ActivityCategory> activityCategories { get; set; } = null!;
+        [Required]
+        public IEnumerable<institution> children { get; set; } = null!;
         public Guid parentId { get; set; }
         [Required]
         public institutionType type { get; set; }
