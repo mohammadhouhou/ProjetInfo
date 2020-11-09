@@ -5,12 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include=".api\Controllers\DocumentController.cs" />
     <Compile Include=".api\Controllers\InstitutionController.cs" />
-    <Compile Include=".bll\Dtos\InstitutionCreateDto.cs" />
-    <Compile Include=".bll\Dtos\InstitutionDto.cs" />
-    <Compile Include=".bll\Dtos\InstitutionReadChildDto.cs" />
-    <Compile Include=".bll\Dtos\InstitutionReadDto.cs" />
-    <Compile Include=".bll\Dtos\InstitutionUpdateDto.cs" />
+    <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionCreateDto.cs" />
+    <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionDto.cs" />
+    <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadChildDto.cs" />
+    <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadDto.cs" />
+    <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionUpdateDto.cs" />
     <Compile Include=".bll\Services\IIinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionService.cs" />
@@ -39,6 +40,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include=".bll\Dtos\DocumentDtos\" />
   </ItemGroup>
 
 
