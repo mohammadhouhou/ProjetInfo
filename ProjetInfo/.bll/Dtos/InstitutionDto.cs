@@ -15,8 +15,12 @@ namespace ProjetInfo.bll.Dtos
         [Required]
         [MaxLength(250)]
         public string name { get; set; }
-        public Guid? parentId { get; set; }
         [Required]
         public institutionType type { get; set; }
+        [Required]
+        public int adressId { get; set; }
+        [Required]
+        public int contactInfoId { get; set; }
+        public Guid? parentId { get; set; }
     }
 }

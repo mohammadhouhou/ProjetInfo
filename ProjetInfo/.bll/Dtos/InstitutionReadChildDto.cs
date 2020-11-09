@@ -1,17 +1,14 @@
-﻿using System;
+﻿using ProjetInfo.dal.entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetInfo.dal.entities
+namespace ProjetInfo.bll.Dtos
 {
-    //Put in a sperate class
-    public class Institution
+    public class InstitutionReadChildDto
     {
-        [Key]
-        public Guid id { get; set; }
         [Required]
         [MaxLength(50)]
         public string code { get; set; }
@@ -24,7 +21,5 @@ namespace ProjetInfo.dal.entities
         public int adressId { get; set; }
         [Required]
         public int contactInfoId { get; set; }
-        [ForeignKey("parent")]
-        public Guid? parentId { get; set; }
     }
 }

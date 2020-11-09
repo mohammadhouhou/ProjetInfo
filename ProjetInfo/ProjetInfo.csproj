@@ -8,17 +8,21 @@
     <Compile Include=".api\Controllers\InstitutionController.cs" />
     <Compile Include=".bll\Dtos\InstitutionCreateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDto.cs" />
+    <Compile Include=".bll\Dtos\InstitutionReadChildDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionReadDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionUpdateDto.cs" />
     <Compile Include=".bll\Services\IIinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionService.cs" />
     <Compile Include=".dal\entities\ActivityCategory.cs" />
+    <Compile Include=".dal\entities\InstitutionType.cs" />
     <Compile Include=".dal\entities\CourseComponentType.cs" />
     <Compile Include=".dal\entities\Institution.cs" />
     <Compile Include=".dal\InstitutionContext.cs" />
     <Compile Include=".dal\Migrations\20201106143835_Migrations.cs" />
     <Compile Include=".dal\Migrations\20201106143835_Migrations.Designer.cs" />
+    <Compile Include=".dal\Migrations\20201109144641_Migration_with_addressId_parentId.cs" />
+    <Compile Include=".dal\Migrations\20201109144641_Migration_with_addressId_parentId.Designer.cs" />
     <Compile Include=".dal\Migrations\institutionContextModelSnapshot.cs" />
   </ItemGroup>
 

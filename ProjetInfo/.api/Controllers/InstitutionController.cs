@@ -68,13 +68,14 @@ namespace ProjetInfo.Controllers
 
         //POST api/institution/{id}/institutions
         [HttpPost("{id}/institutions", Name = "AddChild")]
-        public ActionResult<InstitutionReadDto> AddChild(InstitutionReadDto insitutionReadDto)
+        public ActionResult<InstitutionReadChildDto> AddChild(Guid id, InstitutionReadChildDto insitutionReadChildDto)
         {
-            var institutionModel = _mapper.Map<Institution>(insitutionReadDto);
+            var institutionModel = _mapper.Map<Institution>(insitutionReadChildDto);
+            institutionModel.parentId = id;
             _repository.AddChild(institutionModel);
 
-            var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
-            return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.parentId }, institutionReadDto);
+            var institutionReadChildDto = _mapper.Map<InstitutionReadChildDto>(institutionModel);
+            return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionModel.parentId }, institutionReadChildDto) ;
         }
 
         //PUT api/institution/{id}

@@ -12,11 +12,14 @@ namespace ProjetInfo.Mapping
     {
         public InstitutionProfile()
         {
-            //Source -> Target
             CreateMap<Institution, InstitutionReadDto>();
-            //Target -> Source
             CreateMap<InstitutionReadDto, Institution>();
+
+            CreateMap<Institution, InstitutionReadChildDto>();
+            CreateMap<InstitutionReadChildDto, Institution>();
+
             CreateMap<InstitutionUpdateDto, Institution>();
+
             CreateMap<Institution, InstitutionUpdateDto>();
         }
     }
