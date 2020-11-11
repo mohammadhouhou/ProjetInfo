@@ -32,7 +32,7 @@ namespace ProjetInfo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<institutionContext>(opt =>
-              opt.UseSqlServer("Server=DESKTOP-DMIQPQP; database=institutionDB; Trusted_Connection=SSPI;"));
+              opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(s =>
             {
