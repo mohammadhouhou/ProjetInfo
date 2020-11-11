@@ -13,13 +13,10 @@ namespace ProjetInfo.api.Controllers
     [ApiController]
     public class DocumentController : ControllerBase
     {
-        /*
-            PATCH /api/documents/{id}
-         */
         private readonly IDocumentService _repository;
         private readonly IMapper _mapper;
 
-        public InstitutionController(IInstitutionService repository, IMapper mapper)
+        public DocumentController(IDocumentService repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -29,8 +26,8 @@ namespace ProjetInfo.api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<DocumentReadDto>> GetAllDocuments()
         {
-            var institutionItems = _repository.GetDocuments();
-            return Ok(_mapper.Map<IEnumerable<DocumentReadDto>>(institutionItems));
+            var documentItems = _repository.GetDocuments();
+            return Ok(_mapper.Map<IEnumerable<DocumentReadDto>>(documentItems));
         }
 
         //GET api/documents/{id}
