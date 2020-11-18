@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.dal.entities
 {
-    //Put in a sperate class
     public class Institution
     {
         [Key]

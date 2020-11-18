@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.dal
 {
-    public class InstitutionContext : DbContext
+    public class DocumentContext : DbContext
     {
-        public InstitutionContext(DbContextOptions<InstitutionContext> options) : base(options) 
+        public DocumentContext (DbContextOptions<DocumentContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
 
-        public DbSet<Institution> institutions { get; set; }
+        public DbSet<Document> Documents { get; set; } 
     }
 }

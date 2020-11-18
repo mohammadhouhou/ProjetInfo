@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using ProjetInfo.bll.Services.DocumentServices;
+using ProjetInfo.dal.entities;
 
 namespace ProjetInfo.api.Controllers
 {
@@ -22,7 +26,7 @@ namespace ProjetInfo.api.Controllers
             _mapper = mapper;
         }
 
-        //GET api/documents
+/*        //GET api/documents
         [HttpGet]
         public ActionResult<IEnumerable<DocumentReadDto>> GetAllDocuments()
         {
@@ -38,18 +42,13 @@ namespace ProjetInfo.api.Controllers
             if (documentItem != null)
                 return Ok(_mapper.Map<DocumentReadDto>(documentItem));
             return NotFound();
-        }
+        }*/
 
         //POST api/documents
         [HttpPost]
-        public ActionResult<DocumentReadDto> CreateDocument(DocumentReadDto documentReadDto)
+        public IActionResult CreateDocument(IFormFile files)
         {
-            var documentModel = _mapper.Map<Document>(DocumentReadDto);
-            _repository.CreateDocument(institutionModel);
 
-            var documentReadDto = _mapper.Map<DocumentReadDto>(documentModel);
-
-            return CreatedAtRoute(nameof(GetDocumentById), new { Id = DocumentReadDto.id }, DocumentReadDto);
         }
 
         //PUT api/documents/{id}

@@ -25,6 +25,7 @@ namespace ProjetInfo.bll.Services
         {
             _context = context;
         }
+
         public IEnumerable<Institution> GetInstitutions()
         {
             return _context.institutions.ToList();

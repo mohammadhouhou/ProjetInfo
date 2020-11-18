@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\Document\20201118203948_add_Document_Entity.cs" />
+    <Compile Remove="Migrations\Document\20201118203948_add_Document_Entity.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include=".api\Controllers\DocumentController.cs" />
     <Compile Include=".api\Controllers\InstitutionController.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionCreateDto.cs" />
@@ -12,10 +17,13 @@
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadChildDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionUpdateDto.cs" />
-    <Compile Include=".bll\Services\IIinstitutionService.cs" />
+    <Compile Include=".bll\Services\DocumentServices\IDocumentService.cs" />
+    <Compile Include=".bll\Services\InstitutionServices\IIinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
-    <Compile Include=".bll\Services\InstitutionService.cs" />
+    <Compile Include=".bll\Services\InstitutionServices\InstitutionService.cs" />
+    <Compile Include=".dal\DocumentContext.cs" />
     <Compile Include=".dal\entities\ActivityCategory.cs" />
+    <Compile Include=".dal\entities\Document.cs" />
     <Compile Include=".dal\entities\InstitutionType.cs" />
     <Compile Include=".dal\entities\CourseComponentType.cs" />
     <Compile Include=".dal\entities\Institution.cs" />

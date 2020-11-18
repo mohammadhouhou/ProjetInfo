@@ -31,6 +31,7 @@ namespace ProjetInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //InstitutionContext
             services.AddDbContext<InstitutionContext>(opt =>
               opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
             services.AddControllers();
@@ -40,6 +41,10 @@ namespace ProjetInfo
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IInstitutionService, InstitutionService>();
+
+            //DocumentContext
+            services.AddDbContext<DocumentContext>(opt =>
+            opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
