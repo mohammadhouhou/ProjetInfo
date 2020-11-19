@@ -13,7 +13,7 @@ namespace ProjetInfo.bll
         IEnumerable<Institution> GetInstitutions();
         Institution GetInstitutionById(Guid id);
         void AddChild(Institution childInst);
-        public void UpdateInstitution(Institution OLDinst);
+        public void UpdateInstitution(Institution NEWinst);
         void CreateInstitution(Institution inst);
     }
 }

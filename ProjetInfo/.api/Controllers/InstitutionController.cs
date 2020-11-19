@@ -54,7 +54,7 @@ namespace ProjetInfo.Controllers
             return NotFound();
         }
 
-        //POST api/institutions
+        /*//POST api/institutions
         [HttpPost]
         public ActionResult<InstitutionReadDto> CreateInstitution(InstitutionReadDto insitutionReadDto)
         {
@@ -64,7 +64,7 @@ namespace ProjetInfo.Controllers
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
 
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.id}, institutionReadDto);
-        }
+        }*/
 
         //POST api/institution/{id}/institutions
         [HttpPost("{id}/institutions", Name = "AddChild")]
@@ -76,6 +76,14 @@ namespace ProjetInfo.Controllers
 
             var institutionReadChildDto = _mapper.Map<InstitutionReadChildDto>(institutionModel);
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionModel.parentId }, institutionReadChildDto) ;
+        }
+
+        [HttpPost]
+        public IActionResult CreateDocument(IFormFile files)
+        {
+            FormFile fi = (FormFile)files;
+
+            return Ok();
         }
 
         //PUT api/institution/{id}

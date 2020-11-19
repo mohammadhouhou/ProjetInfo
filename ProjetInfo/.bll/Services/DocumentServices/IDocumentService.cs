@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjetInfo.bll.Services.DocumentServices
 {
-    public class IDocumentService
+    public interface IDocumentService
     {
+        void AddFile(IFormFile form);
+        IEnumerable<IFormFile> GetFile();
+        IFormFile GetFileById(Guid id); //Ienum?
+        void UpdateDocument(IFormFile NEWfile);
     }
 }

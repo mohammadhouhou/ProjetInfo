@@ -16,6 +16,7 @@ using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using ProjetInfo.bll.Services;
 using ProjetInfo.bll;
+using ProjetInfo.bll.Services.DocumentServices;
 
 namespace ProjetInfo
 {
@@ -31,20 +32,20 @@ namespace ProjetInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //DocumentContext
+            services.AddDbContext<DocumentContext>(opt =>
+              opt.UseSqlServer("Server=DESKTOP-DMIQPQP; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
+            services.AddScoped<IDocumentService, DocumentService>();
             //InstitutionContext
             services.AddDbContext<InstitutionContext>(opt =>
-              opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
+              opt.UseSqlServer("Server=DESKTOP-DMIQPQP; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<IInstitutionService, InstitutionService>();
-
-            //DocumentContext
-            services.AddDbContext<DocumentContext>(opt =>
-            opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
+            services.AddScoped<IInstitutionService, InstitutionService>();  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

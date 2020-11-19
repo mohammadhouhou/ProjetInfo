@@ -18,13 +18,12 @@ namespace ProjetInfo.bll.Services
 
         private readonly InstitutionContext _context;
 
-
-        //********************* GET METHODS *********************
-
         public InstitutionService(InstitutionContext context)
         {
             _context = context;
         }
+
+        //********************* GET METHODS *********************
 
         public IEnumerable<Institution> GetInstitutions()
         {
@@ -59,7 +58,7 @@ namespace ProjetInfo.bll.Services
         }
 
         //********************* UPDATE METHODS *********************
-        public void UpdateInstitution(Institution OLDinst)
+        public void UpdateInstitution(Institution NEWinst)
         {
             _context.SaveChanges();
         }

@@ -10,8 +10,8 @@ using ProjetInfo.dal;
 namespace ProjetInfo.Migrations.Document
 {
     [DbContext(typeof(DocumentContext))]
-    [Migration("20201118204429_add_Document_Entity")]
-    partial class add_Document_Entity
+    [Migration("20201118222136_DocumentMigration")]
+    partial class DocumentMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,7 +42,6 @@ namespace ProjetInfo.Migrations.Document
                         .HasColumnType("varbinary(max)");
 
                     b.Property<Guid?>("institutionId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("isDeleted")

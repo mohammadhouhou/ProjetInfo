@@ -10,8 +10,8 @@ using ProjetInfo.dal;
 namespace ProjetInfo.Migrations
 {
     [DbContext(typeof(InstitutionContext))]
-    [Migration("20201109144641_Migration_with_addressId_parentId")]
-    partial class Migration_with_addressId_parentId
+    [Migration("20201118221933_InstitutiionMigration")]
+    partial class InstitutiionMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

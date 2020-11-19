@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetInfo.Migrations
 {
-    public partial class Migrations : Migration
+    public partial class InstitutiionMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,10 @@ namespace ProjetInfo.Migrations
                     id = table.Column<Guid>(nullable: false),
                     code = table.Column<string>(maxLength: 50, nullable: false),
                     name = table.Column<string>(maxLength: 250, nullable: false),
-                    parentId = table.Column<Guid>(nullable: true),
-                    type = table.Column<int>(nullable: false)
+                    type = table.Column<int>(nullable: false),
+                    adressId = table.Column<int>(nullable: false),
+                    contactInfoId = table.Column<int>(nullable: false),
+                    parentId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
