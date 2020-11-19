@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ProjetInfo.bll.Services.DocumentServices
 {
@@ -18,7 +19,7 @@ namespace ProjetInfo.bll.Services.DocumentServices
             _context = context;
         }
 
-        public void AddFile(IFormFile form)
+        public void AddDocument(IFormFile form)
         {
             Document Doc = new Document()
             {
@@ -40,14 +41,18 @@ namespace ProjetInfo.bll.Services.DocumentServices
             _context.SaveChanges();
         }
 
-        public IEnumerable<IFormFile> GetFile()
+        public IEnumerable<IFormFile> GetDocuments()
         {
             throw new NotImplementedException();
         }
 
-        public IFormFile GetFileById(Guid id)
+        public IFormFile GetDocumentById(Guid id)
         {
-            throw new NotImplementedException();
+            Document Doc = _context.Documents.Find(id);
+
+            var stream = new MemoryStream(Doc.fileData);
+            IFormFile DocumentToReturn = new FormFile(stream, 0, Doc.fileData.Length, "DocumentToReturn", Doc.name);
+            return DocumentToReturn;
         }
 
         public void UpdateDocument(IFormFile NEWfile)

@@ -26,23 +26,23 @@ namespace ProjetInfo.api.Controllers
             _mapper = mapper;
         }
 
-        /*        //GET api/documents
-                [HttpGet]
-                public ActionResult<IEnumerable<DocumentReadDto>> GetAllDocuments()
-                {
-                    var documentItems = _repository.GetDocuments();
-                    return Ok(_mapper.Map<IEnumerable<DocumentReadDto>>(documentItems));
-                }
+        //GET api/documents
+        /*[HttpGet]
+        public ActionResult<IEnumerable<Document>> GetAllDocuments()
+        {
+            *//*var documentItems = _repository.GetDocuments();
+            return Ok(documentItems);*//*
+        }*/
 
-                //GET api/documents/{id}
-                [HttpGet("{id}", Name = "GetDocumentById")]
-                public ActionResult<IEnumerable<DocumentReadDto>> GetDocumentById(Guid id)
-                {
-                    var documentItem = _repository.GetDocumentById(id);
-                    if (documentItem != null)
-                        return Ok(_mapper.Map<DocumentReadDto>(documentItem));
-                    return NotFound();
-                }*/
+        //GET api/documents/{id}
+        [HttpGet("{id}", Name = "GetDocumentById")]
+        public ActionResult<IEnumerable<IFormFile>> GetDocumentById(Guid id)
+        {
+            var documentItem = _repository.GetDocumentById(id);
+            if (documentItem != null)
+                return Ok(documentItem);
+            return NotFound();
+        }
 
         //POST api/documents
         [HttpPost]
@@ -50,7 +50,7 @@ namespace ProjetInfo.api.Controllers
         {
             if (files != null)
             {
-                _repository.AddFile(files);
+                _repository.AddDocument(files);
                 return Ok();
             }
             return NoContent();
