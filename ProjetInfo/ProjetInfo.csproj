@@ -7,11 +7,15 @@
   <ItemGroup>
     <Compile Include=".api\Controllers\DocumentController.cs" />
     <Compile Include=".api\Controllers\InstitutionController.cs" />
+    <Compile Include=".bll\Dtos\DocumentDtos\DocumentDataUpdateDto.cs" />
+    <Compile Include=".bll\Dtos\DocumentDtos\DocumentUpdateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionCreateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadChildDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionUpdateDto.cs" />
+    <Compile Include=".bll\Mapping\DocumentDataProfile.cs" />
+    <Compile Include=".bll\Mapping\DocumentProfile.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocmentService.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocumentDataService.cs" />
     <Compile Include=".bll\Services\DocumentServices\IDocumentDataService.cs" />
@@ -30,9 +34,13 @@
     <Compile Include=".dal\InstitutionContext.cs" />
     <Compile Include=".dal\Migrations\DocumentData\20201120204145_DocumentDataFirstMigration.cs" />
     <Compile Include=".dal\Migrations\DocumentData\20201120204145_DocumentDataFirstMigration.Designer.cs" />
+    <Compile Include=".dal\Migrations\DocumentData\20201120212210_DocumentData.cs" />
+    <Compile Include=".dal\Migrations\DocumentData\20201120212210_DocumentData.Designer.cs" />
     <Compile Include=".dal\Migrations\DocumentData\DocumentDataContextModelSnapshot.cs" />
     <Compile Include=".dal\Migrations\Document\20201120204125_DocumentFirstMigration.cs" />
     <Compile Include=".dal\Migrations\Document\20201120204125_DocumentFirstMigration.Designer.cs" />
+    <Compile Include=".dal\Migrations\Document\20201120212118_Document.cs" />
+    <Compile Include=".dal\Migrations\Document\20201120212118_Document.Designer.cs" />
     <Compile Include=".dal\Migrations\Document\DocumentContextModelSnapshot.cs" />
     <Compile Include=".dal\Migrations\Institution\20201106143835_Migrations.cs" />
     <Compile Include=".dal\Migrations\Institution\20201106143835_Migrations.Designer.cs" />

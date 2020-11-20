@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using ProjetInfo.bll.Dtos.DocumentDtos;
 using ProjetInfo.bll.Services.DocumentServices;
 using ProjetInfo.dal.entities;
 
@@ -33,43 +34,76 @@ namespace ProjetInfo.api.Controllers
         public ActionResult<IEnumerable<Document>> GetDocumentById(Guid id)
         {
             var documentItem = _documentRepository.GetDocumentById(id);
+            var docData = _documentDataRepository.GetDataById(id);
             if (documentItem != null)
             {
-         //       return File(documentItem.fileData, documentItem.contentType, documentItem.name);
+                return File(docData.fileData, documentItem.contentType, documentItem.name);
+            }
+            return NotFound();
+        }
+
+        [HttpGet("{id}/details", Name = "GetDocumentDetailsById")]
+        public ActionResult<IEnumerable<Document>> GetDocumentDetailsById(Guid id)
+        {
+            var documentItem = _documentRepository.GetDocumentById(id);
+            if (documentItem != null)
+            {
+                return Ok(documentItem);
             }
             return NotFound();
         }
 
         //POST api/documents
         [HttpPost]
-        public IActionResult CreateDocument(IFormFile files )
+        public IActionResult CreateDocument(IFormFile files, [FromForm] Guid? institutionID, [FromForm] Guid universityID, [FromForm] string description)
         {
             if (files != null)
             {
-                _documentRepository.AddDocument(files);
+                Guid DocRefID = new Guid(_documentRepository.AddDocument(files, institutionID, universityID, description));
+                _documentDataRepository.AddDocumentData(files, DocRefID);
                 return Ok();
             }
             return NoContent();
         }
 
         //PUT api/documents/{id}
-        [HttpPut("{id}")]
-        public ActionResult updateDocument(Guid id, Document NEWDoc)
+        [HttpPut("{id}/details")]
+        public ActionResult updateDocument(Guid id, DocumentUpdateDto NEWDoc)
         {
             var documentModelFromRepo = _documentRepository.GetDocumentById(id);
             if (documentModelFromRepo == null)
             {
                 return NotFound();
             }
+            _mapper.Map(NEWDoc, documentModelFromRepo);
+            _documentRepository.UpdateDocument();
 
-            _documentRepository.UpdateDocument(NEWDoc);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult updateDocumentData(Guid id, IFormFile Newfile)
+        {
+            var documentModelFromRepo = _documentDataRepository.GetDataById(id);
+            if (documentModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            DocumentDataUpdateDto NEWDocData = new DocumentDataUpdateDto();
+            using (var target = new MemoryStream())
+            {
+                Newfile.CopyTo(target);
+                NEWDocData.fileData = target.ToArray();
+            }
+            _mapper.Map(NEWDocData, documentModelFromRepo);
+            _documentDataRepository.UpdateDocumentData();
 
             return NoContent();
         }
 
         //PATCH api/documents/{id}
-       /* [HttpPatch("{id}")]
-        public ActionResult PartialDocumentUpdate(int id, JsonPatchDocument<DocumentUpdateDto> patchDoc)
+        [HttpPatch("{id}")]
+        public ActionResult PartialDocumentUpdate(Guid id, JsonPatchDocument<DocumentUpdateDto> patchDoc)
         {
             var documentModelFromRepo = _documentRepository.GetDocumentById(id);
             if (documentModelFromRepo == null)
@@ -85,11 +119,10 @@ namespace ProjetInfo.api.Controllers
             }
             _mapper.Map(documentToPatch, documentModelFromRepo);
 
-            _documentRepository.UpdateCommand(documentModelFromRepo);
-            _documentRepository.SaveChanges();
+            _documentRepository.UpdateDocument();
 
             return NoContent();
-        }*/
+        }
 
     }
 }

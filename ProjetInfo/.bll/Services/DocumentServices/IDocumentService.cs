@@ -9,8 +9,8 @@ namespace ProjetInfo.bll.Services.DocumentServices
 {
     public interface IDocumentService
     {
-        void AddDocument(IFormFile fileForm);
+        string AddDocument(IFormFile form, Guid? institutionId, Guid universityId, string description);
         Document GetDocumentById(Guid id);
-        void UpdateDocument(Document NEWFile);
+        void UpdateDocument();
     }
 }

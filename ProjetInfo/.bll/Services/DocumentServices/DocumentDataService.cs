@@ -3,6 +3,7 @@ using ProjetInfo.dal;
 using ProjetInfo.dal.entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,24 +16,32 @@ namespace ProjetInfo.bll.Services.DocumentServices
         {
             _context = context;
         }
-        public void AddDocument(IFormFile fileForm)
+
+        public void AddDocumentData(IFormFile file, Guid DocumentID)
         {
-            throw new NotImplementedException();
+
+            DocumentData DocData = new DocumentData()
+            {
+                documentID = DocumentID
+            };
+
+            using (var target = new MemoryStream())
+            {
+                file.CopyTo(target);
+                DocData.fileData = target.ToArray();
+            }
+
+            _context.DocumentDatas.Add(DocData);
+            _context.SaveChanges();
         }
 
-        public IEnumerable<Document> GetDocument()
+        public DocumentData GetDataById(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.DocumentDatas.Where(b => b.documentID == id).FirstOrDefault();
         }
-
-        public Document GetDocumentById(Guid id)
+        public void UpdateDocumentData()
         {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDocument(Document NEWFile)
-        {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

@@ -21,30 +21,28 @@ namespace ProjetInfo.bll.Services.DocumentServices
         {
             return _context.Documents.Find(id);
         }
-        public void AddDocument(IFormFile form)
+        public string AddDocument(IFormFile form, Guid? institutionId, Guid universityId, string description)
         {
             Document Doc = new Document()
             {
-                //contentType = form.ContentType,
-                description = "PlaceHolder",
+                contentType = form.ContentType,
+                description = description,
                 isDeleted = false,
                 name = form.FileName,
-                institutionId = null,
-                universityId = Guid.NewGuid(),
+                institutionId = institutionId,
+                universityId = universityId,
                 uploadedBy = Environment.UserName,
                 uploadedOn = DateTime.Now
             };
-            using (var target = new MemoryStream())
-            {
-                form.CopyTo(target);
-                //Doc.fileData = target.ToArray();
-            }
             _context.Documents.Add(Doc);
             _context.SaveChanges();
+           
+
+            return Doc.id.ToString();
         }
-        public void UpdateDocument(Document NEWfile)
+        public void UpdateDocument()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
     }
