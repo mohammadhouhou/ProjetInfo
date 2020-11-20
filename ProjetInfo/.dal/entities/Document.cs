@@ -20,12 +20,10 @@ namespace ProjetInfo.dal.entities
         [MaxLength(100)]
         public string name { get; set; }
         [Required]
-        [MaxLength(100)]
-        public string description { get; set; }
-        [Required]
         public string contentType { get; set; }
         [Required]
-        public Byte[] fileData { get; set; }
+        [MaxLength(100)]
+        public string description { get; set; }
         [Required]
         public DateTime uploadedOn { get; set; }
         [Required]

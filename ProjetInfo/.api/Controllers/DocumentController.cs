@@ -17,42 +17,36 @@ namespace ProjetInfo.api.Controllers
     [ApiController]
     public class DocumentController : ControllerBase
     {
-        private readonly IDocumentService _repository;
+        private readonly IDocumentService _documentRepository;
+        private readonly IDocumentDataService _documentDataRepository;
         private readonly IMapper _mapper;
 
-        public DocumentController(IDocumentService repository, IMapper mapper)
+        public DocumentController(IDocumentService repository, IDocumentDataService datarepository, IMapper mapper)
         {
-            _repository = repository;
+            _documentRepository = repository;
+            _documentDataRepository = datarepository;
             _mapper = mapper;
-        }
-
-        //GET api/documents
-        [HttpGet]
-        public ActionResult<IEnumerable<Document>> GetAllDocuments()
-        {
-            var documentItems = _repository.GetDocument();
-            return Ok(documentItems);
         }
 
         //GET api/documents/{id}
         [HttpGet("{id}", Name = "GetDocumentById")]
         public ActionResult<IEnumerable<Document>> GetDocumentById(Guid id)
         {
-            var documentItem = _repository.GetDocumentById(id);
+            var documentItem = _documentRepository.GetDocumentById(id);
             if (documentItem != null)
             {
-                return File(documentItem.fileData, documentItem.contentType, documentItem.name);
+         //       return File(documentItem.fileData, documentItem.contentType, documentItem.name);
             }
             return NotFound();
         }
 
         //POST api/documents
         [HttpPost]
-        public IActionResult CreateDocument(IFormFile files)
+        public IActionResult CreateDocument(IFormFile files )
         {
             if (files != null)
             {
-                _repository.AddDocument(files);
+                _documentRepository.AddDocument(files);
                 return Ok();
             }
             return NoContent();
@@ -62,13 +56,13 @@ namespace ProjetInfo.api.Controllers
         [HttpPut("{id}")]
         public ActionResult updateDocument(Guid id, Document NEWDoc)
         {
-            var documentModelFromRepo = _repository.GetDocumentById(id);
+            var documentModelFromRepo = _documentRepository.GetDocumentById(id);
             if (documentModelFromRepo == null)
             {
                 return NotFound();
             }
 
-            _repository.UpdateDocument(NEWDoc);
+            _documentRepository.UpdateDocument(NEWDoc);
 
             return NoContent();
         }
@@ -77,7 +71,7 @@ namespace ProjetInfo.api.Controllers
        /* [HttpPatch("{id}")]
         public ActionResult PartialDocumentUpdate(int id, JsonPatchDocument<DocumentUpdateDto> patchDoc)
         {
-            var documentModelFromRepo = _repository.GetDocumentById(id);
+            var documentModelFromRepo = _documentRepository.GetDocumentById(id);
             if (documentModelFromRepo == null)
             {
                 return NotFound();
@@ -91,8 +85,8 @@ namespace ProjetInfo.api.Controllers
             }
             _mapper.Map(documentToPatch, documentModelFromRepo);
 
-            _repository.UpdateCommand(documentModelFromRepo);
-            _repository.SaveChanges();
+            _documentRepository.UpdateCommand(documentModelFromRepo);
+            _documentRepository.SaveChanges();
 
             return NoContent();
         }*/

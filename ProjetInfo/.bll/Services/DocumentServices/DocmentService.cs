@@ -17,11 +17,6 @@ namespace ProjetInfo.bll.Services.DocumentServices
         {
             _context = context;
         }
-        public IEnumerable<Document> GetDocument()
-        {
-            return _context.Documents.ToList();
-        }
-
         public Document GetDocumentById(Guid id)
         {
             return _context.Documents.Find(id);
@@ -30,7 +25,7 @@ namespace ProjetInfo.bll.Services.DocumentServices
         {
             Document Doc = new Document()
             {
-                contentType = form.ContentType,
+                //contentType = form.ContentType,
                 description = "PlaceHolder",
                 isDeleted = false,
                 name = form.FileName,
@@ -42,7 +37,7 @@ namespace ProjetInfo.bll.Services.DocumentServices
             using (var target = new MemoryStream())
             {
                 form.CopyTo(target);
-                Doc.fileData = target.ToArray();
+                //Doc.fileData = target.ToArray();
             }
             _context.Documents.Add(Doc);
             _context.SaveChanges();

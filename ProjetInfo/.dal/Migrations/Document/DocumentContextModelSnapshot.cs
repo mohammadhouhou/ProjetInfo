@@ -34,10 +34,6 @@ namespace ProjetInfo.Migrations.Document
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<byte[]>("fileData")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<Guid?>("institutionId")
                         .HasColumnType("uniqueidentifier");
 

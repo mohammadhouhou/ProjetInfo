@@ -14,6 +14,6 @@ namespace ProjetInfo.dal
             Database.EnsureCreated();
         }
 
-        public DbSet<Institution> institutions { get; set; }
+        public DbSet<Institution> Institutions { get; set; }
     }
 }

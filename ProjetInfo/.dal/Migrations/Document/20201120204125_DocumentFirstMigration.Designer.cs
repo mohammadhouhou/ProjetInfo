@@ -10,8 +10,8 @@ using ProjetInfo.dal;
 namespace ProjetInfo.Migrations.Document
 {
     [DbContext(typeof(DocumentContext))]
-    [Migration("20201119101752_Documnent_Word_Update")]
-    partial class Documnent_Word_Update
+    [Migration("20201120204125_DocumentFirstMigration")]
+    partial class DocumentFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,10 +35,6 @@ namespace ProjetInfo.Migrations.Document
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
-
-                    b.Property<byte[]>("fileData")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<Guid?>("institutionId")
                         .HasColumnType("uniqueidentifier");

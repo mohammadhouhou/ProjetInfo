@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations
+namespace ProjetInfo.Migrations.DocumentData
 {
-    [DbContext(typeof(InstitutionContext))]
-    partial class institutionContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DocumentDataContext))]
+    partial class DocumentDataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,37 +19,22 @@ namespace ProjetInfo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.Institution", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.DocumentData", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("adressId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("contactInfoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
-                    b.Property<Guid?>("parentId")
+                    b.Property<Guid>("documentID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("type")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("fileData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("Institutions");
+                    b.ToTable("DocumentDatas");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,6 @@ namespace ProjetInfo.bll.Services.DocumentServices
     public interface IDocumentService
     {
         void AddDocument(IFormFile fileForm);
-        IEnumerable<Document> GetDocument();
         Document GetDocumentById(Guid id);
         void UpdateDocument(Document NEWFile);
     }

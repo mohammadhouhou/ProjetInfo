@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetInfo.Migrations.Document
 {
-    public partial class add_Document_Entity : Migration
+    public partial class DocumentFirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,11 +13,10 @@ namespace ProjetInfo.Migrations.Document
                 {
                     id = table.Column<Guid>(nullable: false),
                     universityId = table.Column<Guid>(nullable: false),
-                    institutionId = table.Column<Guid>(nullable: false),
+                    institutionId = table.Column<Guid>(nullable: true),
                     name = table.Column<string>(maxLength: 100, nullable: false),
+                    contentType = table.Column<string>(nullable: false),
                     description = table.Column<string>(maxLength: 100, nullable: false),
-                    contentType = table.Column<string>(maxLength: 50, nullable: false),
-                    fileData = table.Column<byte[]>(nullable: false),
                     uploadedOn = table.Column<DateTime>(nullable: false),
                     uploadedBy = table.Column<string>(nullable: false),
                     isDeleted = table.Column<bool>(nullable: false)

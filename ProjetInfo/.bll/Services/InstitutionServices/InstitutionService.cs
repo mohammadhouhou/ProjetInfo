@@ -28,33 +28,33 @@ namespace ProjetInfo.bll.Services
 
         public IEnumerable<Institution> GetInstitutions()
         {
-            return _context.institutions.ToList();
+            return _context.Institutions.ToList();
         }
 
         public Institution GetInstitutionById(Guid id)
         {
-            return _context.institutions.Find(id);
+            return _context.Institutions.Find(id);
         }
 
         public IEnumerable<Institution> GetInstitutionChildren(Guid Id)
         {
-            return _context.institutions.ToList().Where(institutions => institutions.parentId.Equals(Id));
+            return _context.Institutions.ToList().Where(institutions => institutions.parentId.Equals(Id));
         }
 
         //********************* POST METHODS *********************
 
         public void AddChild(Institution childInst)
         {
-            Institution parentInst = _context.institutions.Find(childInst.parentId);
+            Institution parentInst = _context.Institutions.Find(childInst.parentId);
             if (parentInst == null)
                 throw new ArgumentNullException(nameof(parentInst));
-            _context.institutions.Add(childInst);
+            _context.Institutions.Add(childInst);
             _context.SaveChanges();
         }
 
         public void CreateInstitution(Institution inst)
         {
-            _context.institutions.Add(inst);
+            _context.Institutions.Add(inst);
             _context.SaveChangesAsync();
         }
 

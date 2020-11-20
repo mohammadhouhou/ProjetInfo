@@ -47,6 +47,11 @@ namespace ProjetInfo
             services.AddDbContext<DocumentContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
             services.AddScoped<IDocumentService, DocumentService>();
+
+            //DocumentDataContext
+            services.AddDbContext<DocumentDataContext>(opt =>
+            opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+            services.AddScoped<IDocumentDataService, DocumentDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
