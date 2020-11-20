@@ -16,6 +16,7 @@ using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using ProjetInfo.bll.Services;
 using ProjetInfo.bll;
+using ProjetInfo.bll.Services.DocumentServices;
 
 namespace ProjetInfo
 {
@@ -33,7 +34,7 @@ namespace ProjetInfo
         {
             //InstitutionContext
             services.AddDbContext<InstitutionContext>(opt =>
-              opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
+              opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(s =>
             {
@@ -44,7 +45,8 @@ namespace ProjetInfo
 
             //DocumentContext
             services.AddDbContext<DocumentContext>(opt =>
-            opt.UseSqlServer("Server=(LocalDB)\\Commands; database=Projet_InfoDB; Trusted_Connection=SSPI;"));
+            opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+            services.AddScoped<IDocumentService, DocumentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

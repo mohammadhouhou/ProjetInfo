@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\Document\20201118203948_add_Document_Entity.cs" />
-    <Compile Remove="Migrations\Document\20201118203948_add_Document_Entity.Designer.cs" />
+    <Compile Remove=".dal\Migrations\Document\20201118203948_add_Document_Entity.cs" />
+    <Compile Remove=".dal\Migrations\Document\20201118203948_add_Document_Entity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +17,7 @@
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadChildDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionUpdateDto.cs" />
+    <Compile Include=".bll\Services\DocumentServices\DocmentService.cs" />
     <Compile Include=".bll\Services\DocumentServices\IDocumentService.cs" />
     <Compile Include=".bll\Services\InstitutionServices\IIinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
@@ -28,11 +29,18 @@
     <Compile Include=".dal\entities\CourseComponentType.cs" />
     <Compile Include=".dal\entities\Institution.cs" />
     <Compile Include=".dal\InstitutionContext.cs" />
-    <Compile Include=".dal\Migrations\20201106143835_Migrations.cs" />
-    <Compile Include=".dal\Migrations\20201106143835_Migrations.Designer.cs" />
-    <Compile Include=".dal\Migrations\20201109144641_Migration_with_addressId_parentId.cs" />
-    <Compile Include=".dal\Migrations\20201109144641_Migration_with_addressId_parentId.Designer.cs" />
-    <Compile Include=".dal\Migrations\institutionContextModelSnapshot.cs" />
+    <Compile Include=".dal\Migrations\Document\20201118204429_add_Document_Entity.cs" />
+    <Compile Include=".dal\Migrations\Document\20201118204429_add_Document_Entity.Designer.cs" />
+    <Compile Include=".dal\Migrations\Document\20201118204656_add_Document_Entity_fixed.cs" />
+    <Compile Include=".dal\Migrations\Document\20201118204656_add_Document_Entity_fixed.Designer.cs" />
+    <Compile Include=".dal\Migrations\Document\20201119101752_Documnent_Word_Update.cs" />
+    <Compile Include=".dal\Migrations\Document\20201119101752_Documnent_Word_Update.Designer.cs" />
+    <Compile Include=".dal\Migrations\Document\DocumentContextModelSnapshot.cs" />
+    <Compile Include=".dal\Migrations\Institution\20201106143835_Migrations.cs" />
+    <Compile Include=".dal\Migrations\Institution\20201106143835_Migrations.Designer.cs" />
+    <Compile Include=".dal\Migrations\Institution\20201109144641_Migration_with_addressId_parentId.cs" />
+    <Compile Include=".dal\Migrations\Institution\20201109144641_Migration_with_addressId_parentId.Designer.cs" />
+    <Compile Include=".dal\Migrations\Institution\institutionContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,10 +56,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include=".bll\Dtos\DocumentDtos\" />
   </ItemGroup>
 
 

@@ -23,7 +23,6 @@ namespace ProjetInfo.dal.entities
         [MaxLength(100)]
         public string description { get; set; }
         [Required]
-        [MaxLength(50)]
         public string contentType { get; set; }
         [Required]
         public Byte[] fileData { get; set; }

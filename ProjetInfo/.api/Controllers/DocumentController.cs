@@ -26,49 +26,55 @@ namespace ProjetInfo.api.Controllers
             _mapper = mapper;
         }
 
-/*        //GET api/documents
+        //GET api/documents
         [HttpGet]
-        public ActionResult<IEnumerable<DocumentReadDto>> GetAllDocuments()
+        public ActionResult<IEnumerable<Document>> GetAllDocuments()
         {
-            var documentItems = _repository.GetDocuments();
-            return Ok(_mapper.Map<IEnumerable<DocumentReadDto>>(documentItems));
+            var documentItems = _repository.GetDocument();
+            return Ok(documentItems);
         }
 
         //GET api/documents/{id}
         [HttpGet("{id}", Name = "GetDocumentById")]
-        public ActionResult<IEnumerable<DocumentReadDto>> GetDocumentById(Guid id)
+        public ActionResult<IEnumerable<Document>> GetDocumentById(Guid id)
         {
             var documentItem = _repository.GetDocumentById(id);
             if (documentItem != null)
-                return Ok(_mapper.Map<DocumentReadDto>(documentItem));
+            {
+                return File(documentItem.fileData, documentItem.contentType, documentItem.name);
+            }
             return NotFound();
-        }*/
+        }
 
         //POST api/documents
         [HttpPost]
         public IActionResult CreateDocument(IFormFile files)
         {
-
+            if (files != null)
+            {
+                _repository.AddDocument(files);
+                return Ok();
+            }
+            return NoContent();
         }
 
         //PUT api/documents/{id}
         [HttpPut("{id}")]
-        public ActionResult updateDocument(Guid id, DocumentUpdateDto documentUpdateDto)
+        public ActionResult updateDocument(Guid id, Document NEWDoc)
         {
             var documentModelFromRepo = _repository.GetDocumentById(id);
             if (documentModelFromRepo == null)
             {
                 return NotFound();
             }
-            _mapper.Map(DocumentUpdateDto, documentModelFromRepo);
 
-            _repository.UpdateInstitution(documentModelFromRepo);
+            _repository.UpdateDocument(NEWDoc);
 
             return NoContent();
         }
 
         //PATCH api/documents/{id}
-        [HttpPatch("{id}")]
+       /* [HttpPatch("{id}")]
         public ActionResult PartialDocumentUpdate(int id, JsonPatchDocument<DocumentUpdateDto> patchDoc)
         {
             var documentModelFromRepo = _repository.GetDocumentById(id);
@@ -89,7 +95,7 @@ namespace ProjetInfo.api.Controllers
             _repository.SaveChanges();
 
             return NoContent();
-        }
+        }*/
 
     }
 }
