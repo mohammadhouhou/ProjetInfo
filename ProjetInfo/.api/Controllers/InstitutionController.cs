@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Dtos;
+using ProjetInfo.bll.Dtos.InstitutionDtos;
 using ProjetInfo.bll.Services;
 using ProjetInfo.dal;
 using ProjetInfo.dal.entities;
@@ -64,6 +65,18 @@ namespace ProjetInfo.Controllers
             var institutionReadDto = _mapper.Map<InstitutionReadDto>(institutionModel);
 
             return CreatedAtRoute(nameof(GetInstitutionById), new { Id = institutionReadDto.id}, institutionReadDto);
+        }
+
+        //POST api/institutions/university
+        [HttpPost("University")]
+        public ActionResult<InstitutionReadDto> CreateUniversity(UniversityCreateDto UniversityCreateDto)
+        {
+            var universityModel = _mapper.Map<Institution>(UniversityCreateDto);
+            _repository.CreateInstitution(universityModel);
+
+            var universityReadDto = _mapper.Map<InstitutionReadDto>(universityModel);
+
+            return CreatedAtRoute(nameof(GetInstitutionById), new { Id = universityReadDto.id }, universityReadDto);
         }
 
         //POST api/institution/{id}/institutions

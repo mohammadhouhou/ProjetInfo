@@ -18,13 +18,12 @@ namespace ProjetInfo.bll.Services
 
         private readonly InstitutionContext _context;
 
-
-        //********************* GET METHODS *********************
-
         public InstitutionService(InstitutionContext context)
         {
             _context = context;
         }
+
+        //********************* GET METHODS *********************
 
         public IEnumerable<Institution> GetInstitutions()
         {
@@ -40,6 +39,16 @@ namespace ProjetInfo.bll.Services
         {
             return _context.Institutions.ToList().Where(institutions => institutions.parentId.Equals(Id));
         }
+
+        /*public IEnumerable<Institution> GetUniversities()
+        {
+            return _context.Institutions.ToList().Where(institutions => institutions.parentId.Equals(null));
+        }*/
+
+        /*public Institution GetUniversity(Guid id)
+        {
+            return _context.Institutions.Find(id);
+        }*/
 
         //********************* POST METHODS *********************
 
@@ -57,6 +66,12 @@ namespace ProjetInfo.bll.Services
             _context.Institutions.Add(inst);
             _context.SaveChangesAsync();
         }
+
+        /*public void CreateUniversity(Institution inst)
+        {
+            _context.Institutions.Add(inst);
+            _context.SaveChangesAsync();
+        }*/
 
         //********************* UPDATE METHODS *********************
         public void UpdateInstitution(Institution OLDinst)

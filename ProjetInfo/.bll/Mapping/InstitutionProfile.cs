@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ProjetInfo.bll.Dtos;
+using ProjetInfo.bll.Dtos.InstitutionDtos;
 using ProjetInfo.dal.entities;
 
 namespace ProjetInfo.Mapping
@@ -19,8 +20,10 @@ namespace ProjetInfo.Mapping
             CreateMap<InstitutionReadChildDto, Institution>();
 
             CreateMap<InstitutionUpdateDto, Institution>();
-
             CreateMap<Institution, InstitutionUpdateDto>();
+
+            CreateMap<UniversityCreateDto, Institution>();
+            CreateMap<Institution, UniversityCreateDto>();
         }
     }
 }
