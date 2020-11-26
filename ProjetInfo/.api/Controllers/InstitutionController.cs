@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ProjetInfo.api.Controllers;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Dtos;
 using ProjetInfo.bll.Dtos.InstitutionDtos;
@@ -20,17 +22,20 @@ namespace ProjetInfo.Controllers
     {
         private readonly IInstitutionService _repository;
         private readonly IMapper _mapper;
+        private readonly ILogger<DocumentController> _logger;
 
-        public InstitutionController(IInstitutionService repository, IMapper mapper)
+        public InstitutionController(IInstitutionService repository, IMapper mapper, ILogger<DocumentController> logger)
         {
             _repository = repository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         //GET api/institutions
         [HttpGet]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetAllInstitutions()
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(GetAllInstitutions), "LoggingGetAllInstitutions", DateTime.UtcNow.ToLongTimeString());
             var institutionItems = _repository.GetInstitutions();
             return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(institutionItems));
         }
@@ -39,6 +44,7 @@ namespace ProjetInfo.Controllers
         [HttpGet("{id}",Name = "GetInstitutionById")]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionById(Guid id)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(GetInstitutionById), "LoggingGetInstitutionById", DateTime.UtcNow.ToLongTimeString());
             var insitutionItem = _repository.GetInstitutionById(id);
             if (insitutionItem != null)
                 return Ok(_mapper.Map<InstitutionReadDto>(insitutionItem));
@@ -49,6 +55,7 @@ namespace ProjetInfo.Controllers
         [HttpGet("children/{id}", Name = "GetInstitutionChildren")]
         public ActionResult<IEnumerable<InstitutionReadDto>> GetInstitutionChildren(Guid id)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(GetInstitutionChildren), "LoggingGetInstitutionChildren", DateTime.UtcNow.ToLongTimeString());
             var instiutionChildren = _repository.GetInstitutionChildren(id);
             if (instiutionChildren != null)
                 return Ok(_mapper.Map<IEnumerable<InstitutionReadDto>>(instiutionChildren));
@@ -59,6 +66,7 @@ namespace ProjetInfo.Controllers
         [HttpPost]
         public ActionResult<InstitutionReadDto> CreateInstitution(InstitutionReadDto insitutionReadDto)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(CreateInstitution), "LoggingCreateInstitution", DateTime.UtcNow.ToLongTimeString());
             var institutionModel = _mapper.Map<Institution>(insitutionReadDto);
             _repository.CreateInstitution(institutionModel);
 
@@ -83,6 +91,7 @@ namespace ProjetInfo.Controllers
         [HttpPost("{id}/institutions", Name = "AddChild")]
         public ActionResult<InstitutionReadChildDto> AddChild(Guid id, InstitutionReadChildDto insitutionReadChildDto)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(AddChild), "LoggingAddChild", DateTime.UtcNow.ToLongTimeString());
             var institutionModel = _mapper.Map<Institution>(insitutionReadChildDto);
             institutionModel.parentId = id;
             _repository.AddChild(institutionModel);
@@ -94,6 +103,7 @@ namespace ProjetInfo.Controllers
         //PUT api/institution/{id}
         [HttpPut("{id}")]
         public ActionResult updateInstitution(Guid id, InstitutionUpdateDto institutionUpdateDto) {
+            _logger.LogInformation("{methodName} request for {message}", nameof(updateInstitution), "LoggingupdateInstitution", DateTime.UtcNow.ToLongTimeString());
             var institutionModelFromRepo = _repository.GetInstitutionById(id);
             if(institutionModelFromRepo == null)
             {

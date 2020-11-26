@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ProjetInfo.bll.Dtos.DocumentDtos;
 using ProjetInfo.bll.Services.DocumentServices;
 using ProjetInfo.dal.entities;
@@ -21,18 +22,21 @@ namespace ProjetInfo.api.Controllers
         private readonly IDocumentService _documentRepository;
         private readonly IDocumentDataService _documentDataRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<DocumentController> _logger;
 
-        public DocumentController(IDocumentService repository, IDocumentDataService datarepository, IMapper mapper)
+        public DocumentController(IDocumentService repository, IDocumentDataService datarepository, IMapper mapper, ILogger<DocumentController> logger)
         {
             _documentRepository = repository;
             _documentDataRepository = datarepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         //GET api/documents/{id}
         [HttpGet("{id}", Name = "GetDocumentById")]
         public ActionResult<IEnumerable<Document>> GetDocumentById(Guid id)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(GetDocumentById), "LoggingGetInstitutionById", DateTime.UtcNow.ToLongTimeString());
             var documentItem = _documentRepository.GetDocumentById(id);
             var docData = _documentDataRepository.GetDataById(id);
             if (documentItem != null)
@@ -57,6 +61,7 @@ namespace ProjetInfo.api.Controllers
         [HttpPost]
         public IActionResult CreateDocument(IFormFile files, [FromForm] Guid? institutionID, [FromForm] Guid universityID, [FromForm] string description)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(CreateDocument), "LoggingCreateDocument", DateTime.UtcNow.ToLongTimeString());
             if (files != null)
             {
                 Guid DocRefID = new Guid(_documentRepository.AddDocument(files, institutionID, universityID, description));
@@ -70,6 +75,7 @@ namespace ProjetInfo.api.Controllers
         [HttpPut("{id}/details")]
         public ActionResult updateDocument(Guid id, DocumentUpdateDto NEWDoc)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(updateDocument), "LoggingupdateDocument", DateTime.UtcNow.ToLongTimeString());
             var documentModelFromRepo = _documentRepository.GetDocumentById(id);
             if (documentModelFromRepo == null)
             {
@@ -105,6 +111,7 @@ namespace ProjetInfo.api.Controllers
         [HttpPatch("{id}")]
         public ActionResult PartialDocumentUpdate(Guid id, JsonPatchDocument<DocumentUpdateDto> patchDoc)
         {
+            _logger.LogInformation("{methodName} request for {message}", nameof(PartialDocumentUpdate), "LoggingPartialDocumentUpdate", DateTime.UtcNow.ToLongTimeString());
             var documentModelFromRepo = _documentRepository.GetDocumentById(id);
             if (documentModelFromRepo == null)
             {
