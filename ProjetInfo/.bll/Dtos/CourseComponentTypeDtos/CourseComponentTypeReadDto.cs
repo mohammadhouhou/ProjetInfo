@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetInfo.dal.entities
+namespace ProjetInfo.bll.Dtos.CourseComponentTypeDtos
 {
-    public class CourseComponentType
+    public class CourseComponentTypeReadDto
     {
         [Key]
         public Guid id { get; set; }

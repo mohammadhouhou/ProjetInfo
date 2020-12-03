@@ -18,6 +18,7 @@ using ProjetInfo.bll.Services;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Services.DocumentServices;
 using ProjetInfo.bll.Services.ActivityCategoryServices;
+using ProjetInfo.bll.Services.CourseComponentTypeServices;
 
 namespace ProjetInfo
 {
@@ -58,6 +59,11 @@ namespace ProjetInfo
             services.AddDbContext<ActivityCategoryContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
             services.AddScoped<IActivityCategoryService, ActivityCategoryService>();
+
+            //CourseComponentTypeContext
+            services.AddDbContext<CourseComponentTypeContext>(opt =>
+            opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+            services.AddScoped<ICourseComponentTypeService, CourseComponentTypeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
