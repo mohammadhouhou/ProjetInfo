@@ -19,7 +19,7 @@ namespace ProjetInfo.bll.Services.DocumentServices
         }
         public Document GetDocumentById(Guid id)
         {
-            return _context.Documents.Find(id);
+            return _context.Documents.Where(document => document.id == id).Where(document => document.isDeleted == false).FirstOrDefault();
         }
         public string AddDocument(IFormFile form, Guid? institutionId, Guid universityId, string description)
         {

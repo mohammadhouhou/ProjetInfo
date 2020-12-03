@@ -17,6 +17,7 @@ using AutoMapper;
 using ProjetInfo.bll.Services;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Services.DocumentServices;
+using ProjetInfo.bll.Services.ActivityCategoryServices;
 using ProjetInfo.bll.Services.CourseComponentTypeServices;
 
 namespace ProjetInfo
@@ -53,6 +54,11 @@ namespace ProjetInfo
             services.AddDbContext<DocumentDataContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
             services.AddScoped<IDocumentDataService, DocumentDataService>();
+
+            //ActivityCategoryContext
+            services.AddDbContext<ActivityCategoryContext>(opt =>
+            opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+            services.AddScoped<IActivityCategoryService, ActivityCategoryService>();
 
             //CourseComponentTypeContext
             services.AddDbContext<CourseComponentTypeContext>(opt =>

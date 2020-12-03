@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include=".api\Controllers\ActivityCategoryController.cs" />
     <Compile Remove="Migrations\CourseComponentType\20201203002407_CourseComponentType_first.cs" />
     <Compile Remove="Migrations\CourseComponentType\20201203002407_CourseComponentType_first.Designer.cs" />
     <Compile Remove="Migrations\CourseComponentType\20201203002848_CourseComponentType_first.cs" />
@@ -33,6 +34,8 @@
     <Compile Include=".bll\Mapping\CourseComponentTypeProfile.cs" />
     <Compile Include=".bll\Mapping\DocumentDataProfile.cs" />
     <Compile Include=".bll\Mapping\DocumentProfile.cs" />
+    <Compile Include=".bll\Services\ActivityCategoryServices\ActivityCategoryService.cs" />
+    <Compile Include=".bll\Services\ActivityCategoryServices\IActivityCategoryService.cs" />
     <Compile Include=".bll\Services\CourseComponentTypeServices\CourseComponentTypeService.cs" />
     <Compile Include=".bll\Services\CourseComponentTypeServices\ICourseComponentTypeService.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocumentService.cs" />
@@ -42,6 +45,7 @@
     <Compile Include=".bll\Services\InstitutionServices\IinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionServices\InstitutionService.cs" />
+    <Compile Include=".dal\ActivityCategoryContext.cs" />
     <Compile Include=".dal\CourseComponentTypeContext.cs" />
     <Compile Include=".dal\DocumentContext.cs" />
     <Compile Include=".dal\DocumentDataContext.cs" />
