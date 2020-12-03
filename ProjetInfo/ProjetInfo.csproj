@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include=".api\Controllers\ActivityCategoryController.cs" />
     <Compile Include=".api\Controllers\DocumentController.cs" />
     <Compile Include=".api\Controllers\InstitutionController.cs" />
     <Compile Include=".bll\Dtos\DocumentDtos\DocumentDataUpdateDto.cs" />
@@ -17,6 +18,8 @@
     <Compile Include=".bll\Dtos\InstitutionDtos\UniversityCreateDto.cs" />
     <Compile Include=".bll\Mapping\DocumentDataProfile.cs" />
     <Compile Include=".bll\Mapping\DocumentProfile.cs" />
+    <Compile Include=".bll\Services\ActivityCategoryServices\ActivityCategoryService.cs" />
+    <Compile Include=".bll\Services\ActivityCategoryServices\IActivityCategoryService.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocumentService.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocumentDataService.cs" />
     <Compile Include=".bll\Services\DocumentServices\IDocumentDataService.cs" />
@@ -24,6 +27,7 @@
     <Compile Include=".bll\Services\InstitutionServices\IinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionServices\InstitutionService.cs" />
+    <Compile Include=".dal\ActivityCategoryContext.cs" />
     <Compile Include=".dal\DocumentContext.cs" />
     <Compile Include=".dal\DocumentDataContext.cs" />
     <Compile Include=".dal\entities\ActivityCategory.cs" />
