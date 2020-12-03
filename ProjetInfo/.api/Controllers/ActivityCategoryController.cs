@@ -48,7 +48,7 @@ namespace ProjetInfo.api.Controllers
         public IActionResult AddActivityCategory(ActivityCategory ActCat)
         {
             _repository.AddActivityCategory(ActCat);
-            return Ok();
+            return Ok(ActCat);
         }
 
         //=====================UPDATE METHODS=====================
@@ -57,7 +57,7 @@ namespace ProjetInfo.api.Controllers
         {
             if (_repository.UpdateActivityCategory(id, newActCat) == false)
                 return BadRequest();
-            return Ok();
+            return Ok(newActCat);
         }
 
         //=====================DELETE METHODS=====================
@@ -66,7 +66,7 @@ namespace ProjetInfo.api.Controllers
         {
             if (_repository.DeleteActivityCategoryById(id) == false)
                 return BadRequest();
-            return Ok();
+            return Ok("Deleted");
         }
     }
 }
