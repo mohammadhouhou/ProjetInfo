@@ -19,7 +19,7 @@ namespace ProjetInfo.bll.Services.ActivityCategoryServices
         public void AddActivityCategory(ActivityCategory ActCat)
         {
             _context.ActivityCategories.Add(ActCat);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public bool DeleteActivityCategoryById(Guid id)
@@ -28,7 +28,7 @@ namespace ProjetInfo.bll.Services.ActivityCategoryServices
             if (ActCatToDelete == null)
                 return false;
             _context.ActivityCategories.Remove(ActCatToDelete);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
             return true;
         }
 
@@ -52,7 +52,7 @@ namespace ProjetInfo.bll.Services.ActivityCategoryServices
             ActCatToUpdate.exclusive = newActCat.exclusive;
             ActCatToUpdate.required = newActCat.required;
             ActCatToUpdate.owner = newActCat.owner;
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
             return true;
         }
     }

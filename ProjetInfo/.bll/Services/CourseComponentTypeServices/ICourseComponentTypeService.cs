@@ -11,7 +11,7 @@ namespace ProjetInfo.bll.Services.CourseComponentTypeServices
         IEnumerable<CourseComponentType> GetAllCourseComponentType();
         CourseComponentType GetCourseComponentTypeById(Guid id);
         void CreateCourseComponentType(CourseComponentType courseComponentType);
-        void UpdateCourseComponentType(CourseComponentType OLDcourseComponentType);
+        void UpdateCourseComponentType(Guid id, CourseComponentType OLDcourseComponentType);
         void DeleteCourseComponentType(CourseComponentType courseComponentType);
     }
 }

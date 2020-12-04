@@ -17,7 +17,7 @@ namespace ProjetInfo.bll.Services.CourseComponentTypeServices
         public void CreateCourseComponentType(CourseComponentType courseComponentType)
         {
             _context.CourseComponentTypes.Add(courseComponentType);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void DeleteCourseComponentType(CourseComponentType courseComponentType)
@@ -27,6 +27,7 @@ namespace ProjetInfo.bll.Services.CourseComponentTypeServices
                 throw new ArgumentNullException(nameof(courseComponentType));
             }
             _context.CourseComponentTypes.Remove(courseComponentType);
+            _context.SaveChanges();
         }
 
         public IEnumerable<CourseComponentType> GetAllCourseComponentType()
@@ -39,8 +40,11 @@ namespace ProjetInfo.bll.Services.CourseComponentTypeServices
             return _context.CourseComponentTypes.Find(id);
         }
 
-        public void UpdateCourseComponentType(CourseComponentType OLDcourseComponentType)
+        public void UpdateCourseComponentType(Guid id, CourseComponentType NewCourseComponentType)
         {
+            CourseComponentType OldCCT = _context.CourseComponentTypes.Find(id);
+            OldCCT.description = NewCourseComponentType.description;
+            OldCCT.code = NewCourseComponentType.code;
             _context.SaveChanges();
         }
     }

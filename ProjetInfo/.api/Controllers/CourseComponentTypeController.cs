@@ -54,7 +54,7 @@ namespace ProjetInfo.api.Controllers
             var courseComponentTypeModel = _repository.GetCourseComponentTypeById(id);
             if (courseComponentTypeModel == null)
                 return NotFound();
-            _repository.UpdateCourseComponentType(courseComponentType);
+            _repository.UpdateCourseComponentType(id, courseComponentType);
             return NoContent();
         }
 
