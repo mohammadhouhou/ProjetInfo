@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ProjetInfo.bll.Dtos.DocumentDtos;
 using ProjetInfo.dal;
 using ProjetInfo.dal.entities;
 using System;
@@ -40,10 +41,27 @@ namespace ProjetInfo.bll.Services.DocumentServices
 
             return Doc.id.ToString();
         }
-        public void UpdateDocument()
+        public void UpdateDocument(Guid id, DocumentUpdateDto NEWDoc)
         {
+            Document OLDDoc = _context.Documents.Find(id);
+            OLDDoc.description = NEWDoc.description;
+            OLDDoc.institutionId = NEWDoc.institutionId;
+            OLDDoc.isDeleted = NEWDoc.isDeleted;
+            OLDDoc.name = NEWDoc.name;
+            OLDDoc.universityId = NEWDoc.universityId;
+            OLDDoc.uploadedBy = System.Environment.UserName;
             _context.SaveChanges();
         }
 
+        public void UpdateDocumentData(Guid id, string ContentType, string FileName)
+        {
+            Document toUpdate = _context.Documents.Find(id);
+            toUpdate.contentType = ContentType;
+            toUpdate.name = FileName + Path.GetExtension(toUpdate.name).ToString();
+        }
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

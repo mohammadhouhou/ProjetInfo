@@ -18,14 +18,8 @@ namespace ProjetInfo.bll.Dtos.DocumentDtos
         [MaxLength(100)]
         public string name { get; set; }
         [Required]
-        public string contentType { get; set; }
-        [Required]
         [MaxLength(100)]
         public string description { get; set; }
-        [Required]
-        public DateTime uploadedOn { get; set; }
-        [Required]
-        public string uploadedBy { get; set; }
         [Required]
         public Boolean isDeleted { get; set; }
     }

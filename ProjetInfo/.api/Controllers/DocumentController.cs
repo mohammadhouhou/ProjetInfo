@@ -81,8 +81,9 @@ namespace ProjetInfo.api.Controllers
             {
                 return NotFound();
             }
-            _mapper.Map(NEWDoc, documentModelFromRepo);
-            _documentRepository.UpdateDocument();
+
+            
+            _documentRepository.UpdateDocument(id, NEWDoc);
 
             return NoContent();
         }
@@ -101,9 +102,11 @@ namespace ProjetInfo.api.Controllers
                 Newfile.CopyTo(target);
                 NEWDocData.fileData = target.ToArray();
             }
+            
             _mapper.Map(NEWDocData, documentModelFromRepo);
             _documentDataRepository.UpdateDocumentData();
-
+            _documentRepository.UpdateDocumentData(id, Newfile.ContentType, Newfile.FileName);
+            _documentRepository.SaveChanges();
             return NoContent();
         }
 
@@ -126,7 +129,7 @@ namespace ProjetInfo.api.Controllers
             }
             _mapper.Map(documentToPatch, documentModelFromRepo);
 
-            _documentRepository.UpdateDocument();
+            _documentRepository.SaveChanges();
 
             return NoContent();
         }
