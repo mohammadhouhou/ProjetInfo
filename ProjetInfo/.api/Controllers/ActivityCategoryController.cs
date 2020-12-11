@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjetInfo.api.Controllers
 {
+    //Commentary added for testing purposes
     [Route("api/ActivityCategory")]
     [ApiController]
     public class ActivityCategoryController : ControllerBase

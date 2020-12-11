@@ -12,12 +12,13 @@ namespace ProjetInfo
     public class InstitutionTest
     {
         //private readonly InstitutionService _repository;
-        [TestCase]
+        [Test]
         public void getChildNumber()
         {
             int x = 4;
+            int y = 2 * 2;
             //var number = _repository.GetInstitutionChildren(new Guid("CB9CFBAF-E1EF-440B-0873-08D88262FA8D")).ToList().Count;
-            Assert.AreEqual(4, x);
+            Assert.AreEqual(x, y);
         }
     }
 }
