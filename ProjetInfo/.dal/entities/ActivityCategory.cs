@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace ProjetInfo.dal.entities
         public string name { get; set; }
         public bool exclusive { get; set; }
         public bool required { get; set; }
+        [ForeignKey("institutionID")]
         public Guid? owner { get; set; }
     }
 }

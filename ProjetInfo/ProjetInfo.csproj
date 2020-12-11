@@ -6,16 +6,16 @@
 
   <ItemGroup>
     <Compile Include=".api\Controllers\ActivityCategoryController.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203002407_CourseComponentType_first.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203002407_CourseComponentType_first.Designer.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203002848_CourseComponentType_first.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203002848_CourseComponentType_first.Designer.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203003038_CourseComponentType_first.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203003038_CourseComponentType_first.Designer.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203003327_CourseComponentType_first.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203003327_CourseComponentType_first.Designer.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203003611_CourseComponentType_first.cs" />
-    <Compile Remove="Migrations\CourseComponentType\20201203003611_CourseComponentType_first.Designer.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203002407_CourseComponentType_first.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203002407_CourseComponentType_first.Designer.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203002848_CourseComponentType_first.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203002848_CourseComponentType_first.Designer.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203003038_CourseComponentType_first.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203003038_CourseComponentType_first.Designer.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203003327_CourseComponentType_first.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203003327_CourseComponentType_first.Designer.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203003611_CourseComponentType_first.cs" />
+    <Compile Remove=".dal\Migrations\CourseComponentType\20201203003611_CourseComponentType_first.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +56,18 @@
     <Compile Include=".dal\entities\CourseComponentType.cs" />
     <Compile Include=".dal\entities\Institution.cs" />
     <Compile Include=".dal\InstitutionContext.cs" />
+    <Compile Include=".dal\Migrations\ActivityCategory\20201203163006_Migrations.cs" />
+    <Compile Include=".dal\Migrations\ActivityCategory\20201203163006_Migrations.Designer.cs" />
+    <Compile Include=".dal\Migrations\ActivityCategory\20201211055255_add-foreignKey-Activity-Category.cs" />
+    <Compile Include=".dal\Migrations\ActivityCategory\20201211055255_add-foreignKey-Activity-Category.Designer.cs" />
+    <Compile Include=".dal\Migrations\ActivityCategory\ActivityCategoryContextModelSnapshot.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\20201203004130_CourseComponentType_first.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\20201203004130_CourseComponentType_first.Designer.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\20201203004419_CourseComponentType_seconf.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\20201203004419_CourseComponentType_seconf.Designer.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\20201211055223_add-owner-cct.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\20201211055223_add-owner-cct.Designer.cs" />
+    <Compile Include=".dal\Migrations\CourseComponentType\CourseComponentTypeContextModelSnapshot.cs" />
     <Compile Include=".dal\Migrations\DocumentData\20201120204145_DocumentDataFirstMigration.cs" />
     <Compile Include=".dal\Migrations\DocumentData\20201120204145_DocumentDataFirstMigration.Designer.cs" />
     <Compile Include=".dal\Migrations\DocumentData\20201120212210_DocumentData.cs" />

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations.CourseComponentType
+namespace ProjetInfo.Migrations.ActivityCategory
 {
-    [DbContext(typeof(CourseComponentTypeContext))]
-    partial class CourseComponentTypeContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ActivityCategoryContext))]
+    [Migration("20201211055255_add-foreignKey-Activity-Category")]
+    partial class addforeignKeyActivityCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace ProjetInfo.Migrations.CourseComponentType
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.CourseComponentType", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.ActivityCategory", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
@@ -27,17 +29,26 @@ namespace ProjetInfo.Migrations.CourseComponentType
 
                     b.Property<string>("code")
                         .IsRequired()
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
+
+                    b.Property<bool>("exclusive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                    b.Property<Guid?>("owner")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("required")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
-                    b.ToTable("CourseComponentTypes");
+                    b.ToTable("ActivityCategories");
                 });
 #pragma warning restore 612, 618
         }
