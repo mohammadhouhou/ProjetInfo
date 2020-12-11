@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ProjetInfo.Migrations.Document
+namespace ProjetInfo.Migrations.ActivityCategory
 {
-    public partial class Document : Migration
+    public partial class ac_fk : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

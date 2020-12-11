@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,22 +10,17 @@ namespace ProjetInfo.dal.entities
 {
     public class ActivityCategory
     {
-
-
+        [Key]
         public Guid id { get; set; }
+        [Required]
+        [MaxLength(6)]
         public string code { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string name { get; set; }
         public bool exclusive { get; set; }
-
         public bool required { get; set; }
-        public Guid owner { get; set; }
-        public ActivityCategory(string name, string code, bool exclusive, bool required, Guid owner)
-        {
-            this.code = code;
-            this.name = name;
-            this.exclusive = exclusive;
-            this.required = required;
-            this.owner = owner;
-        }
+        [ForeignKey("institutionID")]
+        public Guid? owner { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace ProjetInfo.dal.entities
         [MaxLength(100)]
         public string description { get; set; }
         [Required]
-        public DateTime uploadedOn { get; set; }
+        public DateTime uploadedOn { get; set; } = DateTime.Now;
         [Required]
         public string uploadedBy { get; set; }
         [Required]

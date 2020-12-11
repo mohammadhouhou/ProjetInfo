@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations.DocumentData
+namespace ProjetInfo.Migrations.CourseComponentType
 {
-    [DbContext(typeof(DocumentDataContext))]
-    [Migration("20201120204145_DocumentDataFirstMigration")]
-    partial class DocumentDataFirstMigration
+    [DbContext(typeof(CourseComponentTypeContext))]
+    partial class CourseComponentTypeContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,22 +19,28 @@ namespace ProjetInfo.Migrations.DocumentData
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.DocumentData", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.CourseComponentType", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("documentID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<byte[]>("fileData")
+                    b.Property<string>("code")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<Guid?>("owner")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("id");
 
-                    b.ToTable("DocumentDatas");
+                    b.ToTable("CourseComponentTypes");
                 });
 #pragma warning restore 612, 618
         }

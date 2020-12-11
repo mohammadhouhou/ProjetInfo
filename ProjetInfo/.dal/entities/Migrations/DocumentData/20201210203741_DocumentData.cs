@@ -1,32 +1,30 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ProjetInfo.Migrations
+namespace ProjetInfo.Migrations.DocumentData
 {
-    public partial class Migrations : Migration
+    public partial class DocumentData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "institutions",
+                name: "DocumentDatas",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
-                    code = table.Column<string>(maxLength: 50, nullable: false),
-                    name = table.Column<string>(maxLength: 250, nullable: false),
-                    parentId = table.Column<Guid>(nullable: true),
-                    type = table.Column<int>(nullable: false)
+                    documentID = table.Column<Guid>(nullable: false),
+                    fileData = table.Column<byte[]>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_institutions", x => x.id);
+                    table.PrimaryKey("PK_DocumentDatas", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "institutions");
+                name: "DocumentDatas");
         }
     }
 }

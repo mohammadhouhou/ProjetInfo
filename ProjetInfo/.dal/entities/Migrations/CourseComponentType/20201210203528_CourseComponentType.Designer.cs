@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations
+namespace ProjetInfo.Migrations.CourseComponentType
 {
-    [DbContext(typeof(InstitutionContext))]
-    [Migration("20201109144641_Migration_with_addressId_parentId")]
-    partial class Migration_with_addressId_parentId
+    [DbContext(typeof(CourseComponentTypeContext))]
+    [Migration("20201210203528_CourseComponentType")]
+    partial class CourseComponentType
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,37 +21,25 @@ namespace ProjetInfo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.Institution", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.CourseComponentType", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("adressId")
-                        .HasColumnType("int");
 
                     b.Property<string>("code")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("contactInfoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
+                    b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<Guid?>("parentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("type")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
-                    b.ToTable("institutions");
+                    b.ToTable("CourseComponentTypes");
                 });
 #pragma warning restore 612, 618
         }

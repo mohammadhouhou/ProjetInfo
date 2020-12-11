@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations
+namespace ProjetInfo.Migrations.ActivityCategory
 {
-    [DbContext(typeof(InstitutionContext))]
-    partial class institutionContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ActivityCategoryContext))]
+    [Migration("20201211094315_ac_fk")]
+    partial class ac_fk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,37 +21,34 @@ namespace ProjetInfo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.Institution", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.ActivityCategory", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("adressId")
-                        .HasColumnType("int");
-
                     b.Property<string>("code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
+
+                    b.Property<bool>("exclusive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("contactInfoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
-                    b.Property<Guid?>("parentId")
+                    b.Property<Guid?>("owner")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("type")
-                        .HasColumnType("int");
+                    b.Property<bool>("required")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
-                    b.ToTable("Institutions");
+                    b.ToTable("ActivityCategories");
                 });
 #pragma warning restore 612, 618
         }

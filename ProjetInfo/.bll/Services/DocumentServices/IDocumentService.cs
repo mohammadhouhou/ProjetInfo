@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ProjetInfo.bll.Dtos.DocumentDtos;
 using ProjetInfo.dal.entities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace ProjetInfo.bll.Services.DocumentServices
     {
         string AddDocument(IFormFile form, Guid? institutionId, Guid universityId, string description);
         Document GetDocumentById(Guid id);
-        void UpdateDocument();
+        void UpdateDocument(Guid id, DocumentUpdateDto NEWDoc);
+        void UpdateDocumentData(Guid id, string ContentType, string filename);
+        void SaveChanges();
     }
 }

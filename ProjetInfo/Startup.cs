@@ -17,6 +17,8 @@ using AutoMapper;
 using ProjetInfo.bll.Services;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Services.DocumentServices;
+using ProjetInfo.bll.Services.ActivityCategoryServices;
+using ProjetInfo.bll.Services.CourseComponentTypeServices;
 
 namespace ProjetInfo
 {
@@ -34,7 +36,7 @@ namespace ProjetInfo
         {
             //InstitutionContext
             services.AddDbContext<InstitutionContext>(opt =>
-              opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+              opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(s =>
             {
@@ -45,13 +47,23 @@ namespace ProjetInfo
 
             //DocumentContext
             services.AddDbContext<DocumentContext>(opt =>
-            opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+            opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IDocumentService, DocumentService>();
 
             //DocumentDataContext
             services.AddDbContext<DocumentDataContext>(opt =>
-            opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
+            opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IDocumentDataService, DocumentDataService>();
+
+            //ActivityCategoryContext
+            services.AddDbContext<ActivityCategoryContext>(opt =>
+            opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IActivityCategoryService, ActivityCategoryService>();
+
+            //CourseComponentTypeContext
+            services.AddDbContext<CourseComponentTypeContext>(opt =>
+            opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<ICourseComponentTypeService, CourseComponentTypeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

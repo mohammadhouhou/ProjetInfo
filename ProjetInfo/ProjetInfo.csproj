@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include=".api\Controllers\ActivityCategoryController.cs" />
+    <Compile Include=".api\Controllers\CourseComponentTypeController.cs" />
     <Compile Include=".api\Controllers\DocumentController.cs" />
     <Compile Include=".api\Controllers\InstitutionController.cs" />
+    <Compile Include=".bll\Dtos\CourseComponentTypeDtos\CourseComponentTypeReadDto.cs.cs" />
     <Compile Include=".bll\Dtos\DocumentDtos\DocumentDataUpdateDto.cs" />
     <Compile Include=".bll\Dtos\DocumentDtos\DocumentUpdateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionCreateDto.cs" />
@@ -15,8 +18,13 @@
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionReadDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\InstitutionUpdateDto.cs" />
     <Compile Include=".bll\Dtos\InstitutionDtos\UniversityCreateDto.cs" />
+    <Compile Include=".bll\Mapping\CourseComponentTypeProfile.cs" />
     <Compile Include=".bll\Mapping\DocumentDataProfile.cs" />
     <Compile Include=".bll\Mapping\DocumentProfile.cs" />
+    <Compile Include=".bll\Services\ActivityCategoryServices\ActivityCategoryService.cs" />
+    <Compile Include=".bll\Services\ActivityCategoryServices\IActivityCategoryService.cs" />
+    <Compile Include=".bll\Services\CourseComponentTypeServices\CourseComponentTypeService.cs" />
+    <Compile Include=".bll\Services\CourseComponentTypeServices\ICourseComponentTypeService.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocumentService.cs" />
     <Compile Include=".bll\Services\DocumentServices\DocumentDataService.cs" />
     <Compile Include=".bll\Services\DocumentServices\IDocumentDataService.cs" />
@@ -24,6 +32,8 @@
     <Compile Include=".bll\Services\InstitutionServices\IinstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionServices\InstitutionService.cs" />
+    <Compile Include=".dal\ActivityCategoryContext.cs" />
+    <Compile Include=".dal\CourseComponentTypeContext.cs" />
     <Compile Include=".dal\DocumentContext.cs" />
     <Compile Include=".dal\DocumentDataContext.cs" />
     <Compile Include=".dal\entities\ActivityCategory.cs" />
@@ -32,24 +42,26 @@
     <Compile Include=".dal\entities\InstitutionType.cs" />
     <Compile Include=".dal\entities\CourseComponentType.cs" />
     <Compile Include=".dal\entities\Institution.cs" />
+    <Compile Include=".dal\entities\Migrations\ActivityCategory\20201210203422_ActivityCategory.cs" />
+    <Compile Include=".dal\entities\Migrations\ActivityCategory\20201210203422_ActivityCategory.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\ActivityCategory\20201211094315_ac_fk.cs" />
+    <Compile Include=".dal\entities\Migrations\ActivityCategory\20201211094315_ac_fk.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\ActivityCategory\ActivityCategoryContextModelSnapshot.cs" />
+    <Compile Include=".dal\entities\Migrations\CourseComponentType\20201210203528_CourseComponentType.cs" />
+    <Compile Include=".dal\entities\Migrations\CourseComponentType\20201210203528_CourseComponentType.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\CourseComponentType\20201211094147_cct_fk.cs" />
+    <Compile Include=".dal\entities\Migrations\CourseComponentType\20201211094147_cct_fk.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\CourseComponentType\CourseComponentTypeContextModelSnapshot.cs" />
+    <Compile Include=".dal\entities\Migrations\DocumentData\20201210203741_DocumentData.cs" />
+    <Compile Include=".dal\entities\Migrations\DocumentData\20201210203741_DocumentData.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\DocumentData\DocumentDataContextModelSnapshot.cs" />
+    <Compile Include=".dal\entities\Migrations\Document\20201210203702_Document.cs" />
+    <Compile Include=".dal\entities\Migrations\Document\20201210203702_Document.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\Document\DocumentContextModelSnapshot.cs" />
+    <Compile Include=".dal\entities\Migrations\Institution\20201210202450_Migrations_Institution.cs" />
+    <Compile Include=".dal\entities\Migrations\Institution\20201210202450_Migrations_Institution.Designer.cs" />
+    <Compile Include=".dal\entities\Migrations\Institution\InstitutionContextModelSnapshot.cs" />
     <Compile Include=".dal\InstitutionContext.cs" />
-    <Compile Include=".dal\Migrations\DocumentData\20201120204145_DocumentDataFirstMigration.cs" />
-    <Compile Include=".dal\Migrations\DocumentData\20201120204145_DocumentDataFirstMigration.Designer.cs" />
-    <Compile Include=".dal\Migrations\DocumentData\20201120212210_DocumentData.cs" />
-    <Compile Include=".dal\Migrations\DocumentData\20201120212210_DocumentData.Designer.cs" />
-    <Compile Include=".dal\Migrations\DocumentData\DocumentDataContextModelSnapshot.cs" />
-    <Compile Include=".dal\Migrations\Document\20201120204125_DocumentFirstMigration.cs" />
-    <Compile Include=".dal\Migrations\Document\20201120204125_DocumentFirstMigration.Designer.cs" />
-    <Compile Include=".dal\Migrations\Document\20201120212118_Document.cs" />
-    <Compile Include=".dal\Migrations\Document\20201120212118_Document.Designer.cs" />
-    <Compile Include=".dal\Migrations\Document\DocumentContextModelSnapshot.cs" />
-    <Compile Include=".dal\Migrations\Institution\20201106143835_Migrations.cs" />
-    <Compile Include=".dal\Migrations\Institution\20201106143835_Migrations.Designer.cs" />
-    <Compile Include=".dal\Migrations\Institution\20201109144641_Migration_with_addressId_parentId.cs" />
-    <Compile Include=".dal\Migrations\Institution\20201109144641_Migration_with_addressId_parentId.Designer.cs" />
-    <Compile Include=".dal\Migrations\Institution\20201120194246_Insitution_TypoFix.cs" />
-    <Compile Include=".dal\Migrations\Institution\20201120194246_Insitution_TypoFix.Designer.cs" />
-    <Compile Include=".dal\Migrations\Institution\institutionContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +77,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
   </ItemGroup>
 
 

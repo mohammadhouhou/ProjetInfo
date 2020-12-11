@@ -10,7 +10,7 @@ using ProjetInfo.dal;
 namespace ProjetInfo.Migrations.DocumentData
 {
     [DbContext(typeof(DocumentDataContext))]
-    [Migration("20201120212210_DocumentData")]
+    [Migration("20201210203741_DocumentData")]
     partial class DocumentData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

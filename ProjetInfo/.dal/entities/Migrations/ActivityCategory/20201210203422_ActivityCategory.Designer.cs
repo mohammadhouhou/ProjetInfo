@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations.Document
+namespace ProjetInfo.Migrations.ActivityCategory
 {
-    [DbContext(typeof(DocumentContext))]
-    [Migration("20201120204125_DocumentFirstMigration")]
-    partial class DocumentFirstMigration
+    [DbContext(typeof(ActivityCategoryContext))]
+    [Migration("20201210203422_ActivityCategory")]
+    partial class ActivityCategory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,45 +21,34 @@ namespace ProjetInfo.Migrations.Document
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.Document", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.ActivityCategory", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("contentType")
+                    b.Property<string>("code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
 
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<Guid?>("institutionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("isDeleted")
+                    b.Property<bool>("exclusive")
                         .HasColumnType("bit");
 
                     b.Property<string>("name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
-                    b.Property<Guid>("universityId")
+                    b.Property<Guid?>("owner")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("uploadedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("uploadedOn")
-                        .HasColumnType("datetime2");
+                    b.Property<bool>("required")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
-                    b.ToTable("Documents");
+                    b.ToTable("ActivityCategories");
                 });
 #pragma warning restore 612, 618
         }

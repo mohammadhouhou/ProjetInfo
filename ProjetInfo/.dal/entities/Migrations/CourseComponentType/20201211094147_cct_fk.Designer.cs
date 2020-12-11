@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetInfo.dal;
 
-namespace ProjetInfo.Migrations
+namespace ProjetInfo.Migrations.CourseComponentType
 {
-    [DbContext(typeof(InstitutionContext))]
-    [Migration("20201106143835_Migrations")]
-    partial class Migrations
+    [DbContext(typeof(CourseComponentTypeContext))]
+    [Migration("20201211094147_cct_fk")]
+    partial class cct_fk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace ProjetInfo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetInfo.dal.entities.institution", b =>
+            modelBuilder.Entity("ProjetInfo.dal.entities.CourseComponentType", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
@@ -32,20 +32,17 @@ namespace ProjetInfo.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("name")
+                    b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<Guid?>("parentId")
+                    b.Property<Guid?>("owner")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("type")
-                        .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.ToTable("institutions");
+                    b.ToTable("CourseComponentTypes");
                 });
 #pragma warning restore 612, 618
         }
