@@ -37,7 +37,7 @@ namespace ProjetInfo
            new Institution{id = new Guid("af17afcf-8ef5-47cd-b6fa-0171100b624a"), code = "ESIB", name = "Ecole superieur d'ingenieurie de Beirut",
                type = institutionType.universite, adressId= 0, contactInfoId= 0, parentId = new Guid("957C95EB-78DB-4826-C474-08D88263A8C6")},
        };
-        [TestCase]
+        [Test]
         public void getChildNumber()
         {
 /*            IEnumerable<Document> documents;
