@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace ProjetInfo.dal
 {
     public class InstitutionContext : DbContext
-    {
-        //I Changed this file
+    { 
         public InstitutionContext(DbContextOptions<InstitutionContext> options) : base(options) 
         {
             Database.EnsureCreated();
