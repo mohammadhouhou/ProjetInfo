@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 using ProjetInfo.bll;
 using ProjetInfo.bll.Services;
 using ProjetInfo.bll.Services.InstitutionServices;
@@ -40,12 +40,17 @@ namespace ProjetInfo
         [Test]
         public void getChildNumber()
         {
-/*            IEnumerable<Document> documents;
-            IEnumerable<Institution> institutions;
-            MockRepo _repo = new MockRepo(institutions, documents);
-            MockInstitutionService _service = new MockInstitutionService(_repo);*/
+            //IEnumerable<Document> documents;
+            //IEnumerable<Institution> institutions;
+            //MockRepo _repo = new MockRepo(institutions, documents);
+            //MockInstitutionService _service = new MockInstitutionService(_repo);
             var number = institutionRepo.Count();
             Assert.AreEqual(7, number);
         }
     }
+
+    internal class TestAttribute : Attribute
+    {
+    }
 }
+*/

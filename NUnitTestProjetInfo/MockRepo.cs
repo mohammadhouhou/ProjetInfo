@@ -51,10 +51,5 @@ namespace ProjetInfo
                 uploadedBy = "Ray", isDeleted = false}
         };
 
-        public MockRepo(IEnumerable<Institution> instit, IEnumerable<Document> doc)
-        {
-            institutionRepo = instit;
-            documentRepo = doc;
-        }
     }
 }

@@ -42,11 +42,9 @@
     <Compile Include=".bll\Services\DocumentServices\DocumentDataService.cs" />
     <Compile Include=".bll\Services\DocumentServices\IDocumentDataService.cs" />
     <Compile Include=".bll\Services\DocumentServices\IDocumentService.cs" />
-    <Compile Include=".bll\Services\DocumentServices\MockDocumentService.cs" />
     <Compile Include=".bll\Services\InstitutionServices\IInstitutionService.cs" />
     <Compile Include=".bll\Mapping\InstitutionProfile.cs" />
     <Compile Include=".bll\Services\InstitutionServices\InstitutionService.cs" />
-    <Compile Include=".bll\Services\InstitutionServices\MockInstitutionService.cs" />
     <Compile Include=".dal\ActivityCategoryContext.cs" />
     <Compile Include=".dal\CourseComponentTypeContext.cs" />
     <Compile Include=".dal\DocumentContext.cs" />
@@ -103,7 +101,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NUnit" Version="3.12.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
   </ItemGroup>
 
 

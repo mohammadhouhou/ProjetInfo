@@ -9,9 +9,9 @@ namespace ProjetInfo.bll.Services.InstitutionServices
     public class MockInstitutionService : IInstitutionService
     {
         private readonly MockRepo _repository;
-        public MockInstitutionService(MockRepo context)
+        public MockInstitutionService(MockRepo repo)
         {
-            _repository = context;
+            _repository = repo;
         }
         public void AddChild(Institution childInst)
         {
