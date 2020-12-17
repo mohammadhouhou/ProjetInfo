@@ -19,6 +19,7 @@ using ProjetInfo.bll;
 using ProjetInfo.bll.Services.DocumentServices;
 using ProjetInfo.bll.Services.ActivityCategoryServices;
 using ProjetInfo.bll.Services.CourseComponentTypeServices;
+using Microsoft.OpenApi.Models;
 
 namespace ProjetInfo
 {
@@ -64,6 +65,11 @@ namespace ProjetInfo
             services.AddDbContext<CourseComponentTypeContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("RayConnection")));
             services.AddScoped<ICourseComponentTypeService, CourseComponentTypeService>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Projet-Info_API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +89,12 @@ namespace ProjetInfo
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Api v1");
             });
         }
     }
